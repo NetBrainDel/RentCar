@@ -31,4 +31,7 @@ public class User {
 
     @Column
     private String passport;
+
+    @Column
+    private String login;
 }
