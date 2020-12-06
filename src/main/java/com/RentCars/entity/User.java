@@ -1,5 +1,7 @@
 package com.RentCars.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -44,7 +46,7 @@ public class User {
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL,
             fetch = FetchType.EAGER, orphanRemoval = true)
-    @JsonManagedReference("users")
+    @JsonIgnore/*("users")*/
     private Contract contracts ;
 
 }
