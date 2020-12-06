@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
@@ -44,14 +45,10 @@ public class CarServiceImpl implements CarService {
         carRepository.deleteById(carId);
     }
 
-//    @Override
-//    public CarDto findByPassport(String passport) {
-//        Car car = carRepository.findByPassport(passport);
-//        if (car != null) {
-//            return carConverter.fromUserToUserDto(car;
-//        }
-//        return null;
-//    }
+    @Override
+    public Optional<Car> findById(Long Id) {
+        return carRepository.findById(Id);
+    }
 
 
     @Override

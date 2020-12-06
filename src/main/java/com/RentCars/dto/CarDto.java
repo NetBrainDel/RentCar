@@ -21,7 +21,7 @@ public class CarDto {
 
     private String color;
 
-    private String capacity_l;
+    private Double capacity_l;
 
     private String country_of_creation;
 

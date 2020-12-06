@@ -1,9 +1,11 @@
 package com.RentCars.service;
 
 import com.RentCars.dto.CarDto;
+import com.RentCars.entity.Car;
 import com.RentCars.exception.ValidationException;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CarService {
 
@@ -11,7 +13,7 @@ public interface CarService {
 
     void deleteCar(Long carId);
 
-//    CarDto findByPassport(String passport);
+    Optional<Car> findById(Long ID);
 
     List<CarDto> findAll();
 

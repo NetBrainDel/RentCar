@@ -1,5 +1,6 @@
 package com.RentCars.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -41,8 +42,9 @@ public class User {
     @Column
     private String login;
 
-//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL,
-//            fetch = FetchType.EAGER, orphanRemoval = true)
-//    private Contract contracts ;
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER, orphanRemoval = true)
+    @JsonManagedReference("users")
+    private Contract contracts ;
 
 }

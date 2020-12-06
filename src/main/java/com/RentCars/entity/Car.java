@@ -1,5 +1,6 @@
 package com.RentCars.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,6 +17,7 @@ public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column
@@ -35,15 +37,21 @@ public class Car {
     private String color;
 
     @Column
-    private String capacity_l;
+    private Double capacity_l;
 
     @Column
     private String country_of_creation;
 
     @Column
     private Boolean rent;
-//
-//    @ManyToOne(mappedBy = "car", cascade = CascadeType.ALL,
-//            fetch = FetchType.EAGER, orphanRemoval = true)
-//    private Set<Contract> contracts = Collections.emptySet();
+
+//    @ManyToOne(cascade = CascadeType.ALL,
+//            fetch = FetchType.EAGER)
+//    @JsonManagedReference("cars")
+//    private Contract contracts ;
+
+    @OneToOne(mappedBy = "car", cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER, orphanRemoval = true)
+    @JsonManagedReference("cars")
+    private Contract contracts ;
 }

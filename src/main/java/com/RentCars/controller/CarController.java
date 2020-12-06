@@ -1,14 +1,19 @@
 package com.RentCars.controller;
 
 import com.RentCars.dto.CarDto;
+import com.RentCars.entity.Car;
 import com.RentCars.exception.ValidationException;
 import com.RentCars.service.CarService;
+
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/cars")
@@ -18,6 +23,12 @@ public class CarController {
 
     private final CarService carService;
 
+
+    @GetMapping
+    public ResponseEntity<List<CarDto>> findAllCars() {
+
+        return new ResponseEntity<>(carService.findAll(), HttpStatus.OK);
+    }
 
     @PostMapping("/save")
     public CarDto saveCar(@RequestBody CarDto carDto) throws ValidationException {
@@ -30,12 +41,12 @@ public class CarController {
         log.info("Handling find all car request");
         return carService.findAll();
     }
-//
-//    @GetMapping("/findByPassport")
-//    public UserDto findByPassport(@RequestParam String passport) {
-//        log.info("Handling find by passport request: " + passport);
-//        return carService.findByPassport(passport);
-//    }
+
+    @GetMapping("/findById")
+    public Optional<Car> findById(@RequestParam Long id) {
+        log.info("Handling find by id request: " + id);
+        return carService.findById(id);
+    }
 
 
     @DeleteMapping("/delete/{id}")

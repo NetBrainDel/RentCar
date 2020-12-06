@@ -47,7 +47,11 @@ function createUser() {
     var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
     xmlhttp.open("POST", "http://localhost:8080/users/save");
     xmlhttp.setRequestHeader("Content-Type", "application/json");
-    xmlhttp.send(JSON.stringify({username: userUsername, surname: userSurname, birth_date: userBirth_date, gender: userGender, passport: userPassport, login: userLogin}));
+    xmlhttp.send(JSON.stringify({
+        username: userUsername, surname: userSurname,
+        birth_date: userBirth_date, gender: userGender,
+        passport: userPassport, login: userLogin
+    }));
 
     loadUsers();
 }
