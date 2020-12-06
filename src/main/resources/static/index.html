@@ -1,10 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Hello</title>
+
+        <link href="Style.CSS" rel="stylesheet" type="text/css">
+
 </head>
 <body>
-How are you?
+
+<h2>User Table</h2>
+
+<table id="usersList">
+
+</table>
+
+<form action="#">
+    <input id="user_username" placeholder="username">
+    <input id="user_surname" placeholder="surname">
+    <input id="user_birth_date" placeholder="birth_date">
+    <input id="user_gender" placeholder="gender">
+    <input id="user_passport" placeholder="passport">
+    <input id="user_login" placeholder="login">
+
+    <button onclick="createUser()">Create user</button>
+</form>
+
+
+<input id="search_field">
+<button onclick="searchByPassport()">Search by Passport</button>
+
+<script src="JavaScript.js"></script>
+
 </body>
 </html>

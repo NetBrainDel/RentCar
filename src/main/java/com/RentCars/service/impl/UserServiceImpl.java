@@ -53,6 +53,7 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
+
     @Override
     public List<UserDto> findAll() {
         return userRepository.findAll()
@@ -60,8 +61,6 @@ public class UserServiceImpl implements UserService {
                 .map(userConverter::fromUserToUserDto)
                 .collect(Collectors.toList());
     }
-
-
-
-
 }
+
+
