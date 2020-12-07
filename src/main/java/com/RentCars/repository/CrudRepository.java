@@ -1,7 +1,5 @@
 package com.RentCars.repository;
 
-import com.RentCars.entity.Car;
-import com.RentCars.entity.User;
 
 import java.util.List;
 

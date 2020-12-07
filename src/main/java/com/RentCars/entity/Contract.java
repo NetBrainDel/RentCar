@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-import java.util.Collections;
-import java.util.Set;
+import java.util.*;
 
 
 @Data
@@ -31,19 +30,10 @@ public class Contract {
     private Timestamp time_rent_end;
 
 
-    @OneToOne
-    @JoinColumn(name = "car_id")
-    private Car car;
-
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-
-//    @OneToMany
-//    @JoinColumn(name = "car_id")
-//    private Set<Car> car_id = Collections.emptySet();;
-
+    @OneToMany(mappedBy = "contract",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<Car> cars;
 
 
 

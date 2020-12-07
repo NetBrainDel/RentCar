@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -44,9 +45,9 @@ public class User {
     @Column
     private String login;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER, orphanRemoval = true)
-    @JsonIgnore/*("users")*/
-    private Contract contracts ;
+    @OneToMany(mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<Car> cars;
 
 }
