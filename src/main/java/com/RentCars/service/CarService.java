@@ -13,12 +13,8 @@ public interface CarService {
 
     void deleteCar(Long carId);
 
-    Optional<Car> findById(Long ID);
+    Optional<Car> findById(Long id);
 
     List<CarDto> findAll();
-
-
-
-
 
 }

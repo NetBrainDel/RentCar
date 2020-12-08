@@ -35,19 +35,19 @@ public class ContractServiceImpl implements ContractService {
 
     private void validateContractDto(ContractDto contractDto) throws ValidationException {
         if (isNull(contractDto)) {
-            throw new ValidationException("Object car is null");
+            throw new ValidationException("Object Contract is null");
         }
     }
 
     @Override
-    public void deleteContract(Long contractId) {
-        contractRepository.deleteById(contractId);
+    public void deleteContract(Long id) {
+        contractRepository.deleteById(id);
     }
 
 
     @Override
-    public Optional<Contract> findById(Long contractId) {
-        return contractRepository.findById(contractId);
+    public Optional<Contract> findById(Long id) {
+        return contractRepository.findById(id);
     }
 
 

@@ -1,5 +1,6 @@
 package com.RentCars.dto;
 
+import com.RentCars.entity.Contract;
 import lombok.Builder;
 import lombok.Data;
 
@@ -23,5 +24,8 @@ public class UserDto {
     private String passport;
 
     private String login;
+
+    private Contract contract;
+
 
 }

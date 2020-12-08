@@ -3,28 +3,25 @@ package com.RentCars.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
-import java.util.Set;
+import java.util.*;
 
-@Data
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
 @NoArgsConstructor
 @Entity
-@EqualsAndHashCode(exclude = {
-        "contracts"
-})
+//@EqualsAndHashCode(exclude = {
+//        "contract"
+//})
 @Table(name = "m_cars")
 public class Car{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
 
     @Column
@@ -52,22 +49,9 @@ public class Car{
     @Column
     private Boolean rent;
 
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "contract_id")
+    @OneToOne(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JsonIgnore
     private Contract contract;
 
-    @JsonIgnore
-    public Contract getContract() {
-        return contract;
-    }
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @JsonIgnore
-    public User getUser() {
-        return user;
-    }
 }

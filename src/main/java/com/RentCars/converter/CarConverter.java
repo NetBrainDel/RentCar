@@ -17,8 +17,9 @@ public class CarConverter {
         car.setPrice_rent(carDto.getPrice_rent());
         car.setColor(carDto.getColor());
         car.setCapacity_l(carDto.getCapacity_l());
-        car.setCountry_of_creation((carDto.getCountry_of_creation()));
+        car.setCountry_of_creation(carDto.getCountry_of_creation());
         car.setRent(carDto.getRent());
+        car.setContract(carDto.getContract());
 
 
         return car;
@@ -35,6 +36,7 @@ public class CarConverter {
                 .capacity_l((car.getCapacity_l()))
                 .country_of_creation(car.getCountry_of_creation())
                 .rent(car.getRent())
+                .contract(car.getContract())
                 .build();
     }
 

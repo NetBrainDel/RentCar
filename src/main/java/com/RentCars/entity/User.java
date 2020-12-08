@@ -3,9 +3,7 @@ package com.RentCars.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Collections;
@@ -13,12 +11,15 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
 @NoArgsConstructor
 @Entity
-@EqualsAndHashCode(exclude = {
-        "contracts"
-})
+//@EqualsAndHashCode(exclude = {
+//        "contract"
+//})
 @Table(name = "m_users")
 public class User {
 
@@ -45,9 +46,16 @@ public class User {
     @Column
     private String login;
 
-    @OneToMany(mappedBy = "user",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true)
-    private List<Car> cars;
+//    @OneToOne(mappedBy = "user",
+//            cascade = CascadeType.ALL,
+//            orphanRemoval = true)
+//    @OneToOne
+//    @JoinTable(name = "m_contract")
+//    private Contract contract;
+//
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JsonIgnore
+    private Contract contract;
+
 
 }

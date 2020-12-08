@@ -1,8 +1,13 @@
 package com.RentCars.controller;
 
 import com.RentCars.dto.CarDto;
+
 import com.RentCars.entity.Car;
+import com.RentCars.entity.Contract;
+
 import com.RentCars.exception.ValidationException;
+import com.RentCars.repository.CarRepository;
+
 import com.RentCars.service.CarService;
 
 import lombok.AllArgsConstructor;
@@ -23,6 +28,7 @@ public class CarController {
 
     private final CarService carService;
 
+    private final CarRepository carRepository;
 
     @GetMapping
     public ResponseEntity<List<CarDto>> findAllCars() {
@@ -30,11 +36,11 @@ public class CarController {
         return new ResponseEntity<>(carService.findAll(), HttpStatus.OK);
     }
 
-    @PostMapping("/save")
-    public CarDto saveCar(@RequestBody CarDto carDto) throws ValidationException {
-        log.info("Handling save car: " + carDto);
-        return carService.saveCar(carDto);
-    }
+//    @PostMapping("/save")
+//    public CarDto saveCar(@RequestBody CarDto carDto) throws ValidationException {
+//        log.info("Handling save car: " + carDto);
+//        return carService.saveCar(carDto);
+//    }
 
     @GetMapping("/findAll")
     public List<CarDto> findAllCar() {
@@ -54,5 +60,23 @@ public class CarController {
         log.info("Handling delete car request: " + id);
         carService.deleteCar(id);
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Car savingCar(@RequestBody CarDto carDto) {
+
+        Car car = new Car();
+        car.setModel(carDto.getModel());
+        car.setBrand(carDto.getBrand());
+        car.setColor(carDto.getColor());
+        car.setCreation(carDto.getCreation());
+        car.setPrice_rent(carDto.getPrice_rent());
+        car.setCountry_of_creation(carDto.getCountry_of_creation());
+        car.setCapacity_l(carDto.getCapacity_l());
+        car.setRent(carDto.getRent());
+
+        car.setContract(new Contract(car));
+        return carRepository.save(car);
     }
 }

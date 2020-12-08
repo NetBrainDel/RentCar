@@ -1,8 +1,5 @@
 .idea
-.mvn
 target
 HELP.md
-mvnw
-mvnw.cmd
 RentCars.iml
 /src/test/java/com/RentCars/

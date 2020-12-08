@@ -1,5 +1,6 @@
 package com.RentCars.dto;
 
+import com.RentCars.entity.Contract;
 import lombok.Builder;
 import lombok.Data;
 
@@ -26,5 +27,9 @@ public class CarDto {
     private String country_of_creation;
 
     private Boolean rent;
+
+    private Contract contract;
+
+
 
 }

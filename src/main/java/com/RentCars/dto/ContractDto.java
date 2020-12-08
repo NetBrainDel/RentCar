@@ -9,6 +9,7 @@ import lombok.Data;
 
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Data
 @Builder
@@ -22,9 +23,7 @@ public class ContractDto {
 
     private Timestamp time_rent_end;
 
-    private Car car;
-
     private User user;
 
-
+    private Car car;
 }

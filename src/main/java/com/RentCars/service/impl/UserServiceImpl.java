@@ -34,8 +34,8 @@ public class UserServiceImpl implements UserService {
         if (isNull(userDto)) {
             throw new ValidationException("Object user is null");
         }
-        if (isNull(userDto.getLogin()) || userDto.getLogin().isEmpty()) {
-            throw new ValidationException("Login is empty");
+        if (isNull(userDto.getPassport()) || userDto.getPassport().isEmpty()) {
+            throw new ValidationException("Passport is empty");
         }
     }
 
@@ -60,6 +60,11 @@ public class UserServiceImpl implements UserService {
                 .stream()
                 .map(userConverter::fromUserToUserDto)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Optional<UserDto> findById(Long id) {
+        return Optional.empty();
     }
 }
 

@@ -2,11 +2,15 @@ package com.RentCars.controller;
 
 
 
+import com.RentCars.dto.CarDto;
 import com.RentCars.dto.UserDto;
+import com.RentCars.entity.Car;
 import com.RentCars.entity.Contract;
 import com.RentCars.entity.User;
 import com.RentCars.exception.ValidationException;
+import com.RentCars.repository.CarRepository;
 import com.RentCars.repository.UserRepository;
+
 import com.RentCars.service.UserService;
 
 import lombok.AllArgsConstructor;
@@ -16,9 +20,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
-import java.sql.Timestamp;
-import java.util.Collections;
 import java.util.List;
 
 
@@ -29,6 +30,10 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+
+    private final UserRepository userRepository;
+
+  // private final CarRepository carRepository;
 
     @GetMapping
     public ResponseEntity<List<UserDto>> findAllUsers() {
@@ -63,4 +68,42 @@ public class UserController {
     }
 
 
+//    @PostMapping("/save")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public User savingUser(@RequestBody UserDto userDto) {
+//
+//        User user = new User();
+//        user.setGender(userDto.getGender());
+//        user.setUsername(userDto.getUsername());
+//        user.setSurname(userDto.getSurname());
+//        user.setBirth_date(userDto.getBirth_date());
+//        user.setLogin(userDto.getLogin());
+//        user.setPassport(userDto.getPassport());
+//
+//        user.setContract(new Contract(user));
+//        return userRepository.save(user);
+//    }
+
+//    @PostMapping
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public Car savingCar(@RequestBody CarDto carDto) {
+//
+//        Car car = new Car();
+//        car.setModel(carDto.getModel());
+//        car.setBrand(carDto.getBrand());
+//        car.setColor(carDto.getColor());
+//        car.setCreation(carDto.getCreation());
+//        car.setPrice_rent(carDto.getPrice_rent());
+//        car.setRent(carDto.getRent());
+//
+//
+//        car.setContract(new Contract(car));
+//        return carRepository.save(car);
+//    }
+
+
+
+
+
 }
+

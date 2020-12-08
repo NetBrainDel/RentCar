@@ -16,21 +16,23 @@ public class UserConverter {
         user.setGender(userDto.getGender());
         user.setPassport(userDto.getPassport());
         user.setLogin(userDto.getLogin());
+        user.setContract(user.getContract());
 
 
         return user;
     }
 
     public UserDto fromUserToUserDto(User user) {
-        return UserDto.builder()
-                .id(user.getId())
-                .username(user.getUsername())
-                .surname(user.getSurname())
-                .birth_date(user.getBirth_date())
-                .gender(user.getGender())
-                .passport((user.getPassport()))
-                .login((user.getLogin()))
-                .build();
+    return UserDto.builder()
+        .id(user.getId())
+        .username(user.getUsername())
+        .surname(user.getSurname())
+        .birth_date(user.getBirth_date())
+        .gender(user.getGender())
+        .passport((user.getPassport()))
+        .login(user.getLogin())
+        .contract(user.getContract())
+        .build();
     }
 
 }

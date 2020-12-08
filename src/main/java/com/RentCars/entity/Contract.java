@@ -1,8 +1,9 @@
 package com.RentCars.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -10,8 +11,10 @@ import java.sql.Timestamp;
 import java.util.*;
 
 
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
 @Entity
 @Table(name = "m_contract")
 public class Contract {
@@ -24,16 +27,44 @@ public class Contract {
     private String name_contract;
 
     @Column
+
     private Timestamp time_rent_start;
 
     @Column
     private Timestamp time_rent_end;
 
 
-    @OneToMany(mappedBy = "contract",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true)
-    private List<Car> cars;
+    @OneToOne(orphanRemoval = true)
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
+    private User user;
+
+    @OneToOne(orphanRemoval = true)
+    @JoinColumn(name = "car_id")
+    @JsonIgnore
+    private Car car;
+
+
+
+    public Contract() {
+    }
+
+    public Contract(Long id) {
+        this.id = id;
+    }
+
+    public Contract(User user) {
+        this.user = user;
+    }
+
+
+    public Contract(Car car) {
+        this.car = car;
+
+    }
+
+
+    //private Long car_id;
 
 
 
