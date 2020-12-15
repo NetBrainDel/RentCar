@@ -1,8 +1,6 @@
 package com.RentCars.service;
 
-import com.RentCars.dto.CarDto;
 import com.RentCars.dto.ContractDto;
-import com.RentCars.entity.Car;
 import com.RentCars.entity.Contract;
 import com.RentCars.exception.ValidationException;
 

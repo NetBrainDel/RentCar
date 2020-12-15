@@ -4,6 +4,8 @@ import com.RentCars.dto.UserDto;
 import com.RentCars.entity.User;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
+
 @Component
 public class UserConverter {
 
@@ -16,7 +18,7 @@ public class UserConverter {
         user.setGender(userDto.getGender());
         user.setPassport(userDto.getPassport());
         user.setLogin(userDto.getLogin());
-        user.setContract(user.getContract());
+        user.setCar(userDto.getCar());
 
 
         return user;
@@ -29,9 +31,9 @@ public class UserConverter {
         .surname(user.getSurname())
         .birth_date(user.getBirth_date())
         .gender(user.getGender())
-        .passport((user.getPassport()))
+        .passport(user.getPassport())
         .login(user.getLogin())
-        .contract(user.getContract())
+        .car(user.getCar())
         .build();
     }
 

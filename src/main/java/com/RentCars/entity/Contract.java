@@ -46,26 +46,12 @@ public class Contract {
 
 
 
-    public Contract() {
-    }
-
     public Contract(Long id) {
         this.id = id;
     }
 
-    public Contract(User user) {
-        this.user = user;
+
+
+    public Contract() {
     }
-
-
-    public Contract(Car car) {
-        this.car = car;
-
-    }
-
-
-    //private Long car_id;
-
-
-
 }

@@ -1,6 +1,8 @@
 package com.RentCars.repository;
 
 
+import com.RentCars.entity.User;
+
 import java.util.List;
 
 public interface CrudRepository <K,V> {
@@ -14,3 +16,4 @@ public interface CrudRepository <K,V> {
     K delete(V object);
 
 }
+

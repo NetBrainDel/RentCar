@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
 
@@ -52,14 +51,18 @@ public class CarServiceImpl implements CarService {
 
 
 
-
     @Override
-    public List<CarDto> findAll() {
-        return carRepository.findAll()
-                .stream()
-                .map(carConverter::fromCarToCarDto)
-                .collect(Collectors.toList());
+    public List<Car> findAll(){
+        return carRepository.findAll();
     }
+
+//    @Override
+//    public List<CarDto> findAll() {
+//        return carRepository.findAll()
+//                .stream()
+//                .map(carConverter::fromCarToCarDto)
+//                .collect(Collectors.toList());
+//    }
 
 
 

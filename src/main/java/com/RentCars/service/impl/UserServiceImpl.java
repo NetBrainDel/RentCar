@@ -10,7 +10,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
@@ -30,6 +29,7 @@ public class UserServiceImpl implements UserService {
         return userConverter.fromUserToUserDto(savedUser);
     }
 
+
     private void validateUserDto(UserDto userDto) throws ValidationException {
         if (isNull(userDto)) {
             throw new ValidationException("Object user is null");
@@ -38,6 +38,7 @@ public class UserServiceImpl implements UserService {
             throw new ValidationException("Passport is empty");
         }
     }
+
 
     @Override
     public void deleteUser(Long userId) {
@@ -54,6 +55,11 @@ public class UserServiceImpl implements UserService {
     }
 
 
+//    @Override
+//    public List<User> findAll(){
+//        return userRepository.findAll();
+//    }
+
     @Override
     public List<UserDto> findAll() {
         return userRepository.findAll()
@@ -62,10 +68,8 @@ public class UserServiceImpl implements UserService {
                 .collect(Collectors.toList());
     }
 
-    @Override
-    public Optional<UserDto> findById(Long id) {
-        return Optional.empty();
-    }
+
+
 }
 
 

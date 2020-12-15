@@ -12,6 +12,7 @@ function searchByPassport() {
                 '        <th>User gender</th>\n' +
                 '        <th>User passport</th>\n' +
                 '        <th>User login</th>\n' +
+                '        <th>User car</th>\n' +
                 '        <th>Delete</th>\n' +
                 '    </tr>';
             html = html + '<tr>' +
@@ -22,6 +23,7 @@ function searchByPassport() {
                 '        <th>' + user.gender +'</th>\n' +
                 '        <th>' + user.passport +'</th>\n' +
                 '        <th>' + user.login +'</th>\n' +
+                '        <th>' + user.car +'</th>\n' +
                 '        <td><button onclick="deleteUser(' + user.id + ')">Delete</button></td></tr>';
             document.getElementById("usersList").innerHTML = html;
         }
@@ -43,6 +45,7 @@ function createUser() {
     var userGender= document.getElementById("user_gender").value;
     var userPassport= document.getElementById("user_passport").value;
     var userLogin = document.getElementById("user_login").value;
+    var userCar = document.getElementById("user_car:{id}").value;
 
     var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
     xmlhttp.open("POST", "http://localhost:8080/users/save");
@@ -50,7 +53,7 @@ function createUser() {
     xmlhttp.send(JSON.stringify({
         username: userUsername, surname: userSurname,
         birth_date: userBirth_date, gender: userGender,
-        passport: userPassport, login: userLogin
+        passport: userPassport, login: userLogin, car:userCar
     }));
 
     loadUsers();
@@ -69,6 +72,7 @@ function loadUsers() {
                 '        <th>User gender</th>\n' +
                 '        <th>User passport</th>\n' +
                 '        <th>User login</th>\n' +
+                '        <th>User car</th>\n' +
                 '        <th>Delete</th>\n' +
                 '    </tr>';
             for (var i = 0; i < users.length; i++) {
@@ -81,6 +85,7 @@ function loadUsers() {
                     '        <th>' + user.gender + '</th>\n' +
                     '        <th>' + user.passport + '</th>\n' +
                     '        <th>' + user.login + '</th>\n' +
+                    '        <th>' + user.car + '</th>\n' +
                     '        <td><button onclick="deleteUser(' + user.id + ')">Delete</button></td></tr>';
 
             }

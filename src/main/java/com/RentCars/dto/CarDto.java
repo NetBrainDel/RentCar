@@ -1,6 +1,6 @@
 package com.RentCars.dto;
 
-import com.RentCars.entity.Contract;
+
 import lombok.Builder;
 import lombok.Data;
 
@@ -28,7 +28,6 @@ public class CarDto {
 
     private Boolean rent;
 
-    private Contract contract;
 
 
 

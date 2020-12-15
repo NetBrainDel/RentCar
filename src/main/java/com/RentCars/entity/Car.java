@@ -49,9 +49,15 @@ public class Car{
     @Column
     private Boolean rent;
 
-    @OneToOne(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-    @JsonIgnore
-    private Contract contract;
 
+
+    @OneToOne(mappedBy = "car")
+    @JsonIgnore
+    private User user;
+
+    public Car(String model, User user) {
+        this.model = model;
+        this.user = user;
+    }
 
 }

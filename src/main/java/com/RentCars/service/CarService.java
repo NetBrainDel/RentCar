@@ -15,6 +15,6 @@ public interface CarService {
 
     Optional<Car> findById(Long id);
 
-    List<CarDto> findAll();
+    List<Car> findAll();
 
 }

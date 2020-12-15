@@ -3,19 +3,14 @@ package com.RentCars.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+import javax.validation.constraints.NotBlank;
+import java.util.*;
 
-@Getter
-@Setter
-@ToString
-@EqualsAndHashCode
-@NoArgsConstructor
+@Data
 @Entity
 //@EqualsAndHashCode(exclude = {
 //        "contract"
@@ -27,35 +22,54 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     @Column
+   // @NotBlank
     private String username;
 
     @Column
+   // @NotBlank
     private String surname;
 
     @Column
+   // @NotNull
     @Temporal(TemporalType.DATE)
     private Date birth_date;
 
     @Column
+   // @NotBlank
     private String gender;
 
     @Column
+   // @NotBlank
     private String passport;
 
     @Column
+   // @NotBlank
     private String login;
 
-//    @OneToOne(mappedBy = "user",
-//            cascade = CascadeType.ALL,
-//            orphanRemoval = true)
-//    @OneToOne
-//    @JoinTable(name = "m_contract")
-//    private Contract contract;
-//
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-    @JsonIgnore
-    private Contract contract;
 
 
+    @OneToOne
+    //@OneToOne
+    //@JsonIgnore
+    @JoinTable(
+            name = "m_contract",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "car_id")}
+
+
+    )
+    private Car car;
+
+
+
+
+    public User(String username, Car car) {
+        this.username = username;
+        this.car = car;
+    }
+
+    public User() {
+    }
 }
