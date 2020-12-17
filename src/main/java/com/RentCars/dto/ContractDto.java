@@ -25,4 +25,5 @@ public class ContractDto {
 
     private User user;
 
+//    private Car car;
 }

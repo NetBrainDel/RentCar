@@ -43,7 +43,7 @@ public class CarController {
     }
 
     @GetMapping("/findAll")
-    public List<Car> findAllCar() {
+    public List<CarDto> findAllCar() {
         log.info("Handling find all car request");
         return carService.findAll();
     }

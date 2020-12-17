@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Contract</title>
+
+    <link href="Style.CSS" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+<h2>Contract Table</h2>
+
+<table id="contractList"></table>
+
+
+<br/>
+
+
+<form th:action="@{/update/{id}(id=${contract.id})}" th:object="${contract}" method="post">
+
+    <label for="id"></label>
+    <input type="text" th:field="** {name_contract}" id="id" placeholder="Id">
+    <span th:if="${#fields.hasErrors('id')}" th:errors="** {id}"></span>
+
+    <label for="name_contract"></label>
+    <input type="text" th:field="** {name_contract}" id="name_contract" placeholder="Name_contract">
+    <span th:if="${#fields.hasErrors('name_contract')}" th:errors="** {name_contract}"></span>
+
+    <label for="time_rent_start"></label>
+    <input type="datetime-local" th:field="** {time_rent_start}" id="time_rent_start" placeholder="Time_rent_start">
+    <span th:if="${#fields.hasErrors('time_rent_start')}" th:errors="** {time_rent_start}"></span>
+
+    <label for="time_rent_end"></label>
+    <input type="datetime-local" th:field="** {time_rent_end}" id="time_rent_end" placeholder="Time_rent_end">
+    <span th:if="${#fields.hasErrors('time_rent_end')}" th:errors="** {time_rent_end}"></span>
+
+
+    <input type="submit" value="Update contract">
+</form>
+
+<script src="JavaScript.js"></script>
+
+<!--<form action="Car">-->
+<!--    <button button="Car">Car</button>-->
+<!--</form>-->
+
+</body>
+</html>

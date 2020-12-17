@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
 import java.util.*;
@@ -24,13 +26,16 @@ public class Contract {
     private Long id;
 
     @Column
+    @NotBlank
     private String name_contract;
 
     @Column
 
+    @NotNull
     private Timestamp time_rent_start;
 
     @Column
+    @NotNull
     private Timestamp time_rent_end;
 
 
@@ -39,10 +44,7 @@ public class Contract {
     @JsonIgnore
     private User user;
 
-    @OneToOne(orphanRemoval = true)
-    @JoinColumn(name = "car_id")
-    @JsonIgnore
-    private Car car;
+
 
 
 

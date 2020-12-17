@@ -1,16 +1,21 @@
 package com.RentCars.controller;
 
 import com.RentCars.dto.ContractDto;
+import com.RentCars.dto.UserDto;
 import com.RentCars.entity.Contract;
+import com.RentCars.entity.User;
 import com.RentCars.exception.ValidationException;
-import com.RentCars.request.ContractCreateRequest;
+import com.RentCars.repository.ContractRepository;
 import com.RentCars.service.ContractService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +28,7 @@ public class ContractController {
 
     private final ContractService contractService;
 
+    private final ContractRepository contractRepository;
 
     @GetMapping
     public ResponseEntity<List<ContractDto>> findAllContracts() {
@@ -55,21 +61,19 @@ public class ContractController {
         contractService.deleteContract(id);
         return ResponseEntity.ok().build();
     }
-//
-//    @PutMapping("/{id}")
-//    @ResponseStatus(HttpStatus.OK)
-//    public Contract updateContract(@PathVariable Long id,
-//                           @RequestBody ContractCreateRequest contractCreateRequest) {
-//
-//        Contract contract = contractService.findById(id);
-//
-//
-//        contract.setName_contract(contractCreateRequest.getName_contract());
-//        contract.setTime_rent_start(contractCreateRequest.getTime_rent_start()e());
-//        contract.setTime_rent_end(contractCreateRequest.get());
-//        contract.setBirthDate(contractCreateRequest.getBirthDate());
-//        contract.setChanged(new Timestamp(System.currentTimeMillis()));
-//        contract.setWeight(contractCreateRequest.getWeight());
-//        return contractService.update(contract);
-//    }
+
+
+@PostMapping("/update/{id}")
+public String updateContract(@PathVariable("id") long id, @Valid Contract contract,
+                         BindingResult result, Model model) {
+    if (result.hasErrors()) {
+        contract.setId(id);
+        return "update-contract";
+    }
+
+    contractRepository.save(contract);
+    model.addAttribute("contract", contractRepository.findAll());
+    return "index";
+}
+
 }

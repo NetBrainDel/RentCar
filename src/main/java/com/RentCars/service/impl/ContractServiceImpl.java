@@ -49,10 +49,15 @@ public class ContractServiceImpl implements ContractService {
     public Optional<Contract> findById(Long id) {
         return contractRepository.findById(id);
     }
+//
+//    @Override
+//    public List<ContractDto> findAll() {
+//        return null;
+//    }
 
 
 //    @Override
-//    public List<Contract> findAll(){
+//    public List<ContractDto> findAll(){
 //        return contractRepository.findAll();
 //    }
     @Override

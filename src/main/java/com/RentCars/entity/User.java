@@ -1,12 +1,12 @@
 package com.RentCars.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import java.util.*;
 
@@ -24,35 +24,33 @@ public class User {
 
 
     @Column
-   // @NotBlank
+    //@NotBlank
     private String username;
 
     @Column
-   // @NotBlank
+    //@NotBlank
     private String surname;
 
     @Column
-   // @NotNull
+    //@NotNull
     @Temporal(TemporalType.DATE)
     private Date birth_date;
 
     @Column
-   // @NotBlank
+    //@NotBlank
     private String gender;
 
     @Column
-   // @NotBlank
+    //@NotBlank
     private String passport;
 
     @Column
-   // @NotBlank
+    //@NotBlank
     private String login;
 
 
 
     @OneToOne
-    //@OneToOne
-    //@JsonIgnore
     @JoinTable(
             name = "m_contract",
             joinColumns = {@JoinColumn(name = "user_id")},
