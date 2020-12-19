@@ -62,21 +62,5 @@ public class CarController {
         return ResponseEntity.ok().build();
     }
 
-//    @PostMapping("/save")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public Car savingCar(@RequestBody CarDto carDto) {
-//
-//        Car car = new Car();
-//        car.setModel(carDto.getModel());
-//        car.setBrand(carDto.getBrand());
-//        car.setColor(carDto.getColor());
-//        car.setCreation(carDto.getCreation());
-//        car.setPrice_rent(carDto.getPrice_rent());
-//        car.setCountry_of_creation(carDto.getCountry_of_creation());
-//        car.setCapacity_l(carDto.getCapacity_l());
-//        car.setRent(carDto.getRent());
-//
-//        car.setContract(new Contract(car));
-//        return carRepository.save(car);
-//    }
+
 }

@@ -1,9 +1,9 @@
-/*/////////////////////////////////////////////////////USER///////////////////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////////USER/////////////////////////////////////////////////////////////*/
 function searchByPassport() {
     var passport = document.getElementById("search_field").value;
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
+    var https = new XMLHttpRequest();
+    https.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
             var user = JSON.parse(this.responseText);
             var html = '<tr>\n' +
                 '        <th>User id</th>\n' +
@@ -29,14 +29,14 @@ function searchByPassport() {
             document.getElementById("usersList").innerHTML = html;
         }
     };
-    xhttp.open("GET", "http://localhost:8080/users/findByPassport?passport=" + passport, true);
-    xhttp.send();
+    https.open("GET", "http://localhost:8080/users/findByPassport?passport=" + passport, true);
+    https.send();
 }
 
 function deleteUser(userId) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("DELETE", "http://localhost:8080/users/delete/" + userId, true);
-    xhttp.send();
+    var https = new XMLHttpRequest();
+    https.open("DELETE", "http://localhost:8080/users/delete/" + userId, true);
+    https.send();
 }
 
 function createUser() {
@@ -46,24 +46,24 @@ function createUser() {
     var userGender= document.getElementById("user_gender").value;
     var userPassport= document.getElementById("user_passport").value;
     var userLogin = document.getElementById("user_login").value;
-    var userCar = document.getElementById("user_car:{id}").value;
+    let Car = document.getElementById("car:{id}").value;
 
-    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-    xmlhttp.open("POST", "http://localhost:8080/users/save");
-    xmlhttp.setRequestHeader("Content-Type", "application/json");
-    xmlhttp.send(JSON.stringify({
+    var xhtml = new XMLHttpRequest();   // new HttpRequest instance
+    xhtml.open("POST", "http://localhost:8080/users/save");
+    xhtml.setRequestHeader("Content-Type", "application/json");
+    xhtml.send(JSON.stringify({
         username: userUsername, surname: userSurname,
         birth_date: userBirth_date, gender: userGender,
-        passport: userPassport, login: userLogin, car:userCar
+        passport: userPassport, login: userLogin, car:Car
     }));
 
     loadUsers();
 }
 
 function loadUsers() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
+    var https = new XMLHttpRequest();
+    https.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
             var users = JSON.parse(this.responseText);
             var html = '<tr>\n' +
                 '        <th>User id</th>\n' +
@@ -93,114 +93,116 @@ function loadUsers() {
             document.getElementById("usersList").innerHTML = html;
         }
     };
-    xhttp.open("GET", "http://localhost:8080/users/findAll", true);
-    xhttp.send();
+    https.open("GET", "http://localhost:8080/users/findAll", true);
+    https.send();
 }
 
 loadUsers();
 
-/*//////////////////////////////////////////////////CONTRACT//////////////////////////////////////////////////////////////*/
+/*//////////////////////////////////////////////////CONTRACT////////////////////////////////////////////////////////////*/
 
 function createContract() {
-    var contractName = document.getElementById("contract_name_contract").value;
-    var car = document.getElementById("contract_Car").value;
-    var user = document.getElementById("contract_User").value;
-    var time_rent_start = document.getElementById("contract_time_rent_start").value;
-    var time_rent_end = document.getElementById("contract_time_rent_end").value;
+    var name_contract = document.getElementById("name_contract").value;
+    var time_rent_start = document.getElementById("time_rent_start").value;
+    var time_rent_end = document.getElementById("time_rent_end").value;
+    var car_id = document.getElementById("car_id").value;
+    let user_id = document.getElementById("user_id").value;
 
-    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-    xmlhttp.open("POST", "http://localhost:8080/contract/save");
-    xmlhttp.setRequestHeader("Content-Type", "application/json");
-    xmlhttp.send(JSON.stringify({
-        name_contract: contractName, car: car,
-        user: user, time_rent_start: time_rent_start,
-        time_rent_end: time_rent_end
+    var xhtml = new XMLHttpRequest();   // new HttpRequest instance
+    xhtml.open("POST", "http://localhost:8080/contract/save");
+    xhtml.setRequestHeader("Content-Type", "application/json");
+    xhtml.send(JSON.stringify({
+        name_contract: name_contract, time_rent_start: time_rent_start,
+        time_rent_end: time_rent_end, car_id: car_id,
+        user_id: user_id
     }));
 
-     loadContract();
+    loadContract();
+
 }
 
 function loadContract() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            var contract = JSON.parse(this.responseText);
+    var https = new XMLHttpRequest();
+    https.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            var contracts = JSON.parse(this.responseText);
             var html = '<tr>\n' +
                 '        <th>Contract id</th>\n' +
-                '        <th>User</th>\n' +
-                '        <th>Car</th>\n' +
-                '        <th>Name Contract</th>\n' +
+                '        <th>name_contract</th>\n' +
                 '        <th>time_rent_start</th>\n' +
                 '        <th>time_rent_end</th>\n' +
+                '        <th>car_id</th>\n' +
+                '        <th>user_id</th>\n' +
                 '    </tr>';
-            for (var i = 0; i < contract.length; i++) {
-                var contract = contract[i];
+            for (var i = 0; i < contracts.length; i++) {
+                var contract = contracts[i];
                 console.log(contract);
-                html = html + '<tr><td>' + contract.id + '</td>\n' +
-                    '        <th>' + contract.user + '</th>\n' +
-                    '        <th>' + contract.car + '</th>\n' +
+                html = html + '<tr> <td>' + contract.id + '</td>\n' +
                     '        <th>' + contract.name_contract + '</th>\n' +
                     '        <th>' + contract.time_rent_start + '</th>\n' +
                     '        <th>' + contract.time_rent_end + '</th>\n' +
+                    '        <th>' + contract.car_id + '</th>\n' +
+                    '        <th>' + contract.user_id + '</th>\n' +
                     '</tr>';
 
             }
             document.getElementById("contractList").innerHTML = html;
         }
     };
-    xhttp.open("GET", "http://localhost:8080/contract/findAll", true);
-    xhttp.send();
+    https.open("GET", "http://localhost:8080/contract/findAll", true);
+    https.send();
 }
+
 loadContract();
 
 
-/*///////////////////////////////////////////////////////////CAR//////////////////////////////////////////////////////////*/
 
-    function createCars() {
-    var brand = document.getElementById("brand").value;
-    var model = document.getElementById("model").value;
-    var guarantee_expiration_date = document.getElementById("guarantee_expiration_date").value;
-    var price_rent = document.getElementById("price_rent").value;
-    var creation = document.getElementById("creation").value;
-    var capacity_l = document.getElementById("capacity_l").value;
-    var country_of_creation = document.getElementById("country_of_creation").value;
-    var rent = document.getElementById("rent").value;
+/*///////////////////////////////////////////////////////////CAR////////////////////////////////////////////////////////*/
+    function createCar() {
+        const brand = document.getElementById("brand").value;
+        const model = document.getElementById("model").value;
+        const guarantee_expiration_date = document.getElementById("guarantee_expiration_date").value;
+        const price_rent = document.getElementById("price_rent").value;
+        const creation = document.getElementById("creation").value;
+        const capacity_l = document.getElementById("capacity_l").value;
+        const country_of_creation = document.getElementById("country_of_creation").value;
+        const rent = document.getElementById("rent").value;
 
-    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-    xmlhttp.open("POST", "http://localhost:8080/cars/save");
-    xmlhttp.setRequestHeader("Content-Type", "application/json");
-    xmlhttp.send(JSON.stringify({
+        const xhtml = new XMLHttpRequest();   // new HttpRequest instance
+    xhtml.open("POST", "http://localhost:8080/cars/save");
+    xhtml.setRequestHeader("Content-Type", "application/json");
+    xhtml.send(JSON.stringify({
     brand: brand, model: model,
     guarantee_expiration_date: guarantee_expiration_date, price_rent: price_rent,
     creation: creation, capacity_l: capacity_l, country_of_creation: country_of_creation, rent: rent
 }));
 
-    loadCars();
+        loadCars();
 
 }
 
     function loadCars() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-    var car = JSON.parse(this.responseText);
-    var html = '<tr>\n' +
-    '        <th>Car id</th>\n' +
-    '        <th>Brand</th>\n' +
-    '        <th>Model</th>\n' +
-    '        <th>Guarantee_expiration_date</th>\n' +
-    '        <th>Price_rent</th>\n' +
-    '        <th>Color</th>\n' +
-    '        <th>Creation</th>\n' +
-    '        <th>Capacity_l</th>\n' +
-    '        <th>Country_of_creation</th>\n' +
-    '        <th>Rent</th>\n' +
+        const https = new XMLHttpRequest();
+        https.onreadystatechange = function () {
+    if (this.readyState === 4 && this.status === 200) {
+        const cars = JSON.parse(this.responseText);
+        let html = '<tr>\n' +
+            '        <th>Car id</th>\n' +
+            '        <th>Brand</th>\n' +
+            '        <th>Model</th>\n' +
+            '        <th>Guarantee_expiration_date</th>\n' +
+            '        <th>Price_rent</th>\n' +
+            '        <th>Color</th>\n' +
+            '        <th>Creation</th>\n' +
+            '        <th>Capacity_l</th>\n' +
+            '        <th>Country_of_creation</th>\n' +
+            '        <th>Rent</th>\n' +
 
-    '    </tr>';
-    for (var i = 0; i < car.length; i++) {
-    var car = car[i];
-    console.log(car);
-    html = html + '<tr><td>' + car.id + '</td>\n' +
+            '    </tr>';
+        for (let i = 0; i < cars.length; i++) {
+            const car = cars[i];
+            console.log(car);
+    html = html + '<tr> <td>' + car.id + '</td>\n' +
     '        <th>' + car.brand + '</th>\n' +
     '        <th>' + car.model + '</th>\n' +
     '        <th>' + car.guarantee_expiration_date + '</th>\n' +
@@ -216,7 +218,7 @@ loadContract();
     document.getElementById("carList").innerHTML = html;
 }
 };
-    xhttp.open("GET", "http://localhost:8080/cars/findAll", true);
-    xhttp.send();
+    https.open("GET", "http://localhost:8080/cars/findAll", true);
+    https.send();
 }
     loadCars();

@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
-
-
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en, ru">
 <head>
-    <meta charset="UTF-8">
 
-    <title>Contract</title>
+    <title>Contracts</title>
+
+    <meta charset="UTF-8">
 
     <link href="Style.CSS" rel="stylesheet" type="text/css">
 
@@ -16,11 +15,11 @@
 
 <table id="contractList"></table>
 
+<script src="JavaScript.js"></script>
 
-<br/>
 
 
-<form th:action="@{/update/{id}(id=${contract.id})}" th:object="${contract}" method="post">
+<!--<form th:action="@{/update/{id}(id=${contract.id})}" th:object="${contract}" method="post">
 
     <label for="id"></label>
     <input type="text" th:field="** {name_contract}" id="id" placeholder="Id">
@@ -40,13 +39,7 @@
 
 
     <input type="submit" value="Update contract">
-</form>
-
-<script src="JavaScript.js"></script>
-
-<!--<form action="Car">-->
-<!--    <button button="Car">Car</button>-->
-<!--</form>-->
+</form>-->
 
 </body>
 </html>

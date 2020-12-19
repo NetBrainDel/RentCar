@@ -68,7 +68,7 @@ public String updateContract(@PathVariable("id") long id, @Valid Contract contra
                          BindingResult result, Model model) {
     if (result.hasErrors()) {
         contract.setId(id);
-        return "update-contract";
+        return "update";
     }
 
     contractRepository.save(contract);

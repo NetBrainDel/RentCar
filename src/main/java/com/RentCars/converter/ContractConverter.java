@@ -17,7 +17,7 @@ public class ContractConverter {
         contract.setTime_rent_end(contractDto.getTime_rent_end());
         contract.setTime_rent_start(contractDto.getTime_rent_start());
         contract.setUser(contractDto.getUser());
-        //contract.setCar(contractDto.getCar());
+        contract.setCar(contractDto.getCar());
 
 
         return contract;
@@ -30,7 +30,7 @@ public class ContractConverter {
                 .time_rent_end(contract.getTime_rent_end())
                 .time_rent_start(contract.getTime_rent_start())
                 .user(contract.getUser())
-                //.car(contract.getCar())
+                .car(contract.getCar())
                 .build();
     }
 

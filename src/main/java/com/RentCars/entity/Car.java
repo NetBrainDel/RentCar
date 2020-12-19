@@ -35,6 +35,10 @@ public class Car{
     private Date creation;
 
     @Column
+    @Temporal(TemporalType.DATE)
+    private Date guarantee_expiration_date;
+
+    @Column
     private Double price_rent;
 
     @Column
@@ -45,6 +49,7 @@ public class Car{
 
     @Column
     private String country_of_creation;
+
 
     @Column
     private Boolean rent;
@@ -59,5 +64,21 @@ public class Car{
         this.model = model;
         this.user = user;
     }
+
+//    @OneToOne
+//    @JoinTable(
+//            name = "m_contract",
+//            joinColumns = {@JoinColumn(name = "user_id")},
+//            inverseJoinColumns = {@JoinColumn(name = "car_id")}
+//
+//
+//    )
+//    private Car cars;
+//
+//
+//
+//
+//    public Car() {
+//    }
 
 }

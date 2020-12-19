@@ -28,7 +28,7 @@ public class CarDto {
 
     private Boolean rent;
 
-
+    private Date guarantee_expiration_date;
 
 
 }

@@ -44,7 +44,10 @@ public class Contract {
     @JsonIgnore
     private User user;
 
-
+    @OneToOne(orphanRemoval = true)
+    @JoinColumn(name = "car_id")
+    @JsonIgnore
+    private Car car;
 
 
 

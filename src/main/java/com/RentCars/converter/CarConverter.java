@@ -18,6 +18,7 @@ public class CarConverter {
         car.setColor(carDto.getColor());
         car.setCapacity_l(carDto.getCapacity_l());
         car.setCountry_of_creation(carDto.getCountry_of_creation());
+        car.setGuarantee_expiration_date(carDto.getGuarantee_expiration_date());
         car.setRent(carDto.getRent());
        // car.setContract(carDto.getContract());
 
@@ -35,6 +36,7 @@ public class CarConverter {
                 .color((car.getColor()))
                 .capacity_l((car.getCapacity_l()))
                 .country_of_creation(car.getCountry_of_creation())
+                .guarantee_expiration_date(car.getGuarantee_expiration_date())
                 .rent(car.getRent())
          //       .contract(car.getContract())
                 .build();
