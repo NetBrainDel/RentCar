@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="Style.CSS" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <title>Contracts</title>
+</head>
+<body>
+<div th:switch="${contracts}">
+    <h2 th:case="null">No contracts found!</h2>
+    <div th:case="*">
+        <h2>Contracts</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name contract</th>
+                <th>Time rent start</th>
+                <th>Time rent end</th>
+                <th>Car</th>
+                <th>User</th>
+                <th>UpDate</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="contract : ${contracts}">
+                <td th:text="${contract.id}"></td>
+                <td th:text="${contract.name_contract}"></td>
+                <td th:text="${contract.time_rent_start}"></td>
+                <td th:text="${contract.time_rent_end}"></td>
+                <td th:text="${contract.car_id}"></td>
+                <td th:text="${contract.user_id}"></td>
+                <td><a th:href="@{update/{id}(id=${contract.id})}">UPDATE</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<form action="index.html">
+    <button>User Table</button>
+</form>
+
+<form action="cars.html">
+    <button>Cars Table</button>
+</form>
+
+</body>
+</html>
