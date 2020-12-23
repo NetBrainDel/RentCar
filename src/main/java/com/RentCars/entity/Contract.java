@@ -2,21 +2,17 @@ package com.RentCars.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.sql.Timestamp;
-
-import java.util.*;
+import java.util.Date;
 
 
-@Getter
-@Setter
-@ToString
-@EqualsAndHashCode
+@Data
 @Entity
 @Table(name = "m_contract")
 public class Contract {
@@ -25,37 +21,28 @@ public class Contract {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
-    @NotBlank
+    //@NotBlank
+    @Column(name = "name_contract")
     private String name_contract;
 
-    @Column
+    // @NotNull
+    @Column(name = "time_rent_start")
+    private String  time_rent_start;
 
-    @NotNull
-    private Timestamp time_rent_start;
+    @Column(name = "time_rent_end")
+    private String  time_rent_end;
 
-    @Column
-    @NotNull
-    private Timestamp time_rent_end;
+    @Column(name = "car_id")
+    private Long car_id;
 
-
-    @OneToOne(orphanRemoval = true)
-    @JoinColumn(name = "user_id")
-    @JsonIgnore
-    private User user;
-
-    @OneToOne(orphanRemoval = true)
-    @JoinColumn(name = "car_id")
-    @JsonIgnore
-    private Car car;
+    @Column(name = "user_id")
+    private Long user_id;
 
 
 
     public Contract(Long id) {
         this.id = id;
     }
-
-
 
     public Contract() {
     }

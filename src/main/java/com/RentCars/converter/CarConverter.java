@@ -4,6 +4,8 @@ import com.RentCars.dto.CarDto;
 import com.RentCars.entity.Car;
 import org.springframework.stereotype.Component;
 
+import java.sql.Date;
+
 
 @Component
 public class CarConverter {
@@ -20,8 +22,6 @@ public class CarConverter {
         car.setCountry_of_creation(carDto.getCountry_of_creation());
         car.setGuarantee_expiration_date(carDto.getGuarantee_expiration_date());
         car.setRent(carDto.getRent());
-       // car.setContract(carDto.getContract());
-
 
         return car;
     }
@@ -38,7 +38,6 @@ public class CarConverter {
                 .country_of_creation(car.getCountry_of_creation())
                 .guarantee_expiration_date(car.getGuarantee_expiration_date())
                 .rent(car.getRent())
-         //       .contract(car.getContract())
                 .build();
     }
 

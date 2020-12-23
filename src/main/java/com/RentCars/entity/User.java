@@ -2,19 +2,13 @@ package com.RentCars.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
 import java.util.*;
 
 @Data
 @Entity
-//@EqualsAndHashCode(exclude = {
-//        "contract"
-//})
 @Table(name = "m_users")
 public class User {
 
@@ -48,14 +42,16 @@ public class User {
     //@NotBlank
     private String login;
 
+    @Column
+    private Long car_n;
 
 
     @OneToOne
+    @JsonIgnore
     @JoinTable(
-            name = "m_contract",
-            joinColumns = {@JoinColumn(name = "user_id")},
+            name = "m_contract" ,
+            joinColumns = {@JoinColumn(name = "user_id" )},
             inverseJoinColumns = {@JoinColumn(name = "car_id")}
-
 
     )
     private Car car;

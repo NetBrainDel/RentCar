@@ -2,6 +2,10 @@
 <html lang="en, ru">
 
 <head>
+
+    <title>Users</title>
+
+
     <meta charset="UTF-8">
 
         <link href="Style.CSS" rel="stylesheet" type="text/css">
@@ -15,26 +19,24 @@
 
 <h3>* - Выжное для заполнения</h3>
 <form action="#">
-    <input id="user_username" placeholder="username*">
-    <input id="user_surname" placeholder="surname*">
-    <input id="user_birth_date" placeholder="birth_date*">
-    <input id="user_gender" placeholder="gender">
-    <input id="user_passport" placeholder="passport*">
-    <input id="user_login" placeholder="login*">
-<!--    <input id="car" placeholder="car*">-->
+    <label for="user_username"></label><input id="user_username" placeholder="username*">
+    <label for="user_surname"></label><input id="user_surname" placeholder="surname*">
+    <label for="user_birth_date"></label><input id="user_birth_date" placeholder="birth_date*">
+    <label for="user_gender"></label><input id="user_gender" placeholder="gender">
+    <label for="user_passport"></label><input id="user_passport" placeholder="passport*">
+    <label for="user_login"></label><input id="user_login" placeholder="login*">
+    <label for="user_car_n"></label><input id="user_car_n" placeholder="car№*">
 
-
-    <button onclick="createUser()">|Create user|</button>
+    <button onclick="createUser()">Create user</button>
 </form>
 
 
-
-<input id="search_field">
+<label for="search_field"></label><input id="search_field">
 <button onclick="searchByPassport()">Search by Passport</button>
 
 
 
-<form action="contract.html">
+<form action = /contracts>
     <button>Contract Table</button>
 </form>
 

@@ -2,14 +2,16 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    border: 5px groove #643b3b;
 }
 
 td, th {
-    border: 1px solid #fffca1;
+    border: 1px solid #8d8b2c;
     text-align: left;
     padding: 8px;
+
 }
 
 tr:nth-child(even) {
-    background-color: #d6f144;
+    background-color: #5c604a;
 }

@@ -4,6 +4,7 @@ import com.RentCars.dto.UserDto;
 import com.RentCars.entity.User;
 import org.springframework.stereotype.Component;
 
+import java.sql.Date;
 import java.util.Collections;
 
 @Component
@@ -19,6 +20,7 @@ public class UserConverter {
         user.setPassport(userDto.getPassport());
         user.setLogin(userDto.getLogin());
         user.setCar(userDto.getCar());
+        user.setCar_n(userDto.getCar_n());
 
 
         return user;
@@ -34,6 +36,7 @@ public class UserConverter {
         .passport(user.getPassport())
         .login(user.getLogin())
         .car(user.getCar())
+        .car_n(user.getCar_n())
         .build();
     }
 

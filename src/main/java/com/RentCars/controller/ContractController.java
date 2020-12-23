@@ -1,79 +1,61 @@
 package com.RentCars.controller;
 
-import com.RentCars.dto.ContractDto;
-import com.RentCars.dto.UserDto;
 import com.RentCars.entity.Contract;
-import com.RentCars.entity.User;
-import com.RentCars.exception.ValidationException;
-import com.RentCars.repository.ContractRepository;
-import com.RentCars.service.ContractService;
-import lombok.AllArgsConstructor;
-import lombok.extern.log4j.Log4j2;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import com.RentCars.service.impl.ContractServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
-import java.sql.Timestamp;
 import java.util.List;
-import java.util.Optional;
 
-@RestController
-@RequestMapping("/contract")
-@AllArgsConstructor
-@Log4j2
+@Controller
 public class ContractController {
 
-    private final ContractService contractService;
+    private final ContractServiceImpl contractService;
 
-    private final ContractRepository contractRepository;
-
-    @GetMapping
-    public ResponseEntity<List<ContractDto>> findAllContracts() {
-
-        return new ResponseEntity(contractService.findAll(), HttpStatus.OK);
+    @Autowired
+    public ContractController(ContractServiceImpl contractService) {
+        this.contractService = contractService;
     }
 
-    @PostMapping("/save")
-    public ContractDto saveContract(@RequestBody ContractDto contractDto) throws ValidationException {
-        log.info("Handling save contract: " + contractDto);
-        return contractService.saveContract(contractDto);
+    @GetMapping("/contracts")
+    public String findAll(Model model){
+        List<Contract> contracts = contractService.findAll();
+        model.addAttribute("contracts", contracts);
+        return "contracts";
     }
 
-    @GetMapping("/findAll")
-    public List<ContractDto> findAllContract() {
-        log.info("Handling find all contract request");
-        return contractService.findAll();
-    }
+//    @GetMapping("/user-create")
+//    public String createUserForm(Contract contract){
+//        return "";
+//    }
+//
+//    @PostMapping("/user-create")
+//    public String createUser(User user){
+//        userService.saveUser(user);
+//        return "redirect:/users";
+//    }
 
-    @GetMapping("/findById")
-    public Optional<Contract> findById(@RequestParam Long id) {
-        log.info("Handling find by contract request: " + id);
-        return contractService.findById(id);
-    }
+//    @GetMapping("user-delete/{id}")
+//    public String deleteUser(@PathVariable("id") Long id){
+//        userService.deleteById(id);
+//        return "redirect:/users";
+//    }
 
-
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteContract(@PathVariable Long id) {
-        log.info("Handling delete contract request: " + id);
-        contractService.deleteContract(id);
-        return ResponseEntity.ok().build();
-    }
-
-
-@PostMapping("/update/{id}")
-public String updateContract(@PathVariable("id") long id, @Valid Contract contract,
-                         BindingResult result, Model model) {
-    if (result.hasErrors()) {
-        contract.setId(id);
+    @GetMapping("/update/{id}")
+    public String updateContractForm(@PathVariable("id") Long id, Model model, @Valid Contract contract){
+        contract = contractService.findById(id);
+        model.addAttribute("contract", contract);
         return "update";
     }
 
-    contractRepository.save(contract);
-    model.addAttribute("contract", contractRepository.findAll());
-    return "index";
-}
-
+    @PostMapping("/update")
+    public String updateContract(Contract contract){
+        contractService.saveContract(contract);
+        return "redirect:/contracts";
+    }
 }

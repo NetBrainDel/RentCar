@@ -27,6 +27,7 @@ public class UserServiceImpl implements UserService {
         validateUserDto(userDto);
         User savedUser = userRepository.save(userConverter.fromUserDtoToUser(userDto));
         return userConverter.fromUserToUserDto(savedUser);
+
     }
 
 
@@ -41,8 +42,9 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public void deleteUser(Long userId) {
-        userRepository.deleteById(userId);
+    public List<User> deleteUser(Long userId) {
+       userRepository.deleteById(userId);
+       return userRepository.findAll();
     }
 
     @Override

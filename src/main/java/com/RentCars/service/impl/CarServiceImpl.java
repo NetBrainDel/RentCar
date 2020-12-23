@@ -59,6 +59,7 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public List<CarDto> findAll() {
+
         return carRepository.findAll()
                 .stream()
                 .map(carConverter::fromCarToCarDto)

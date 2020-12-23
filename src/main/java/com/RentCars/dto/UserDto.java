@@ -2,7 +2,7 @@ package com.RentCars.dto;
 
 
 import com.RentCars.entity.Car;
-import com.RentCars.entity.Contract;
+
 import lombok.Builder;
 import lombok.Data;
 
@@ -26,6 +26,8 @@ public class UserDto {
     private String passport;
 
     private String login;
+
+    private Long car_n;
 
     private Car car;
 

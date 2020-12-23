@@ -4,6 +4,7 @@ package com.RentCars.controller;
 
 
 import com.RentCars.dto.UserDto;
+import com.RentCars.entity.Car;
 import com.RentCars.entity.User;
 import com.RentCars.exception.ValidationException;
 import com.RentCars.repository.UserRepository;
@@ -39,6 +40,7 @@ public class UserController {
 
     @PostMapping("/save")
     public UserDto saveUser(@RequestBody UserDto userDto) throws ValidationException {
+
         log.info("Handling save user: " + userDto);
         return userService.saveUser(userDto);
     }
@@ -58,7 +60,7 @@ public class UserController {
 
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+    public ResponseEntity<User> deleteUser(@PathVariable Long id) {
         log.info("Handling delete user request: " + id);
         userService.deleteUser(id);
         return ResponseEntity.ok().build();
@@ -78,7 +80,7 @@ public class UserController {
 //        user.setPassport(userDto.getPassport());
 //        user.setCar((userDto.getCar()));
 //
-//
+//        System.out.println("SAVE");
 //        return userRepository.save(user);
 //    }
 

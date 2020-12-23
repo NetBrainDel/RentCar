@@ -12,7 +12,7 @@ public interface UserService {
 
     UserDto saveUser(UserDto userDto) throws ValidationException;
 
-    void deleteUser(Long userId);
+    List<User> deleteUser(Long userId);
 
     UserDto findByPassport(String passport);
 

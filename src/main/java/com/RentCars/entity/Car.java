@@ -14,9 +14,6 @@ import java.util.*;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Entity
-//@EqualsAndHashCode(exclude = {
-//        "contract"
-//})
 @Table(name = "m_cars")
 public class Car{
 
@@ -50,35 +47,20 @@ public class Car{
     @Column
     private String country_of_creation;
 
-
     @Column
     private Boolean rent;
 
-
-
-    @OneToOne(mappedBy = "car")
+    @OneToOne(mappedBy = "car", orphanRemoval = true)
     @JsonIgnore
     private User user;
+
+
 
     public Car(String model, User user) {
         this.model = model;
         this.user = user;
     }
 
-//    @OneToOne
-//    @JoinTable(
-//            name = "m_contract",
-//            joinColumns = {@JoinColumn(name = "user_id")},
-//            inverseJoinColumns = {@JoinColumn(name = "car_id")}
-//
-//
-//    )
-//    private Car cars;
-//
-//
-//
-//
-//    public Car() {
-//    }
+
 
 }

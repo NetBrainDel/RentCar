@@ -1,70 +1,36 @@
 package com.RentCars.service.impl;
 
-import com.RentCars.converter.ContractConverter;
-
-import com.RentCars.dto.ContractDto;
 import com.RentCars.entity.Contract;
-import com.RentCars.exception.ValidationException;
 import com.RentCars.repository.ContractRepository;
 import com.RentCars.service.ContractService;
 
-import lombok.AllArgsConstructor;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
-import static java.util.Objects.isNull;
+    @Service
+    public class ContractServiceImpl implements ContractService {
 
-@Service
-@AllArgsConstructor
-public class ContractServiceImpl implements ContractService {
+        private final ContractRepository contractRepository;
 
-    private final ContractRepository contractRepository;
-    private final ContractConverter contractConverter;
-
-
-    @Override
-    public ContractDto saveContract(ContractDto contractDto) throws ValidationException {
-        validateContractDto(contractDto);
-        Contract saveContract = contractRepository.save(contractConverter.fromContractDtoToContract(contractDto));
-        return contractConverter.fromContractToContractDto(saveContract);
-    }
-
-    private void validateContractDto(ContractDto contractDto) throws ValidationException {
-        if (isNull(contractDto)) {
-            throw new ValidationException("Object Contract is null");
+        @Autowired
+        public ContractServiceImpl(ContractRepository contractRepository) {
+            this.contractRepository = contractRepository;
         }
+
+        public Contract findById(Long id){
+            return contractRepository.getOne(id);
+        }
+
+        public List<Contract> findAll(){
+            return contractRepository.findAll();
+        }
+
+        public Contract saveContract(Contract contract){
+            return contractRepository.save(contract);
+        }
+
     }
 
-    @Override
-    public void deleteContract(Long id) {
-        contractRepository.deleteById(id);
-    }
 
-
-    @Override
-    public Optional<Contract> findById(Long id) {
-        return contractRepository.findById(id);
-    }
-//
-//    @Override
-//    public List<ContractDto> findAll() {
-//        return null;
-//    }
-
-
-//    @Override
-//    public List<ContractDto> findAll(){
-//        return contractRepository.findAll();
-//    }
-    @Override
-    public List<ContractDto> findAll() {
-        return contractRepository.findAll()
-                .stream()
-                .map(contractConverter::fromContractToContractDto)
-                .collect(Collectors.toList());
-    }
-}
