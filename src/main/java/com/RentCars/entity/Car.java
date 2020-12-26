@@ -50,6 +50,7 @@ public class Car{
     @Column
     private Boolean rent;
 
+
     @OneToOne(mappedBy = "car", orphanRemoval = true)
     @JsonIgnore
     private User user;

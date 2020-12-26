@@ -28,7 +28,7 @@ function searchByPassport() {
                 '        <th>' + user.login +'</th>\n' +
                 '        <th>' + car.car +'</th>\n' +
                 '        <th>' + user.car_n +'</th>\n' +
-                '        <td><button onclick="deleteUser(' + user.id + ')">Delete</button></td></tr>',
+                '        <td><button onclick="deleteUser(' + user.id + ')">Delete</button></td></tr>';
 
             document.getElementById("usersList").innerHTML = html;
         }
@@ -124,10 +124,10 @@ loadUsers();
         let xhtml = new XMLHttpRequest();   // new HttpRequest instance
     xhtml.open("POST", "http://localhost:8080/cars/save");
     xhtml.setRequestHeader("Content-Type", "application/json");
-    xhtml.send(JSON.stringify({
+        xhtml.send(JSON.stringify({
     brand: brand, model: model,
     guarantee_expiration_date: guarantee_expiration_date, price_rent: price_rent,
-    creation: creation, capacity_l: capacity_l, country_of_creation: country_of_creation, rent : rental_access
+    creation: creation, capacity_l: capacity_l, country_of_creation: country_of_creation, rent: rental_access
 }));
 
         loadCars();
@@ -154,7 +154,12 @@ loadUsers();
             '    </tr>';
         for (let i = 0; i < cars.length; i++) {
             let car = cars[i];
-            console.log(car);
+
+            if (this.rent === true)
+            {
+                console.log(car);
+            }
+
     html = html + '<tr> <td>' + car.id + '</td>\n' +
     '        <th>' + car.brand + '</th>\n' +
     '        <th>' + car.model + '</th>\n' +
@@ -164,7 +169,7 @@ loadUsers();
     '        <th>' + car.creation + '</th>\n' +
     '        <th>' + car.capacity_l + '</th>\n' +
     '        <th>' + car.country_of_creation + '</th>\n' +
-    '        <th>' + car.rent  + '</th>\n' +
+    '        <th>' + car.rent + '</th>\n' +
     '</tr>';
 
 }

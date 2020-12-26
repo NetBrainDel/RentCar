@@ -32,8 +32,8 @@ public class CarController {
 
     @GetMapping
     public ResponseEntity<List<CarDto>> findAllCars() {
-
         return new ResponseEntity(carService.findAll(), HttpStatus.OK);
+
     }
 
     @PostMapping("/save")

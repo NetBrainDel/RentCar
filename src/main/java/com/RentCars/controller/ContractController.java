@@ -29,23 +29,6 @@ public class ContractController {
         return "contracts";
     }
 
-//    @GetMapping("/user-create")
-//    public String createUserForm(Contract contract){
-//        return "";
-//    }
-//
-//    @PostMapping("/user-create")
-//    public String createUser(User user){
-//        userService.saveUser(user);
-//        return "redirect:/users";
-//    }
-
-//    @GetMapping("user-delete/{id}")
-//    public String deleteUser(@PathVariable("id") Long id){
-//        userService.deleteById(id);
-//        return "redirect:/users";
-//    }
-
     @GetMapping("/update/{id}")
     public String updateContractForm(@PathVariable("id") Long id, Model model, @Valid Contract contract){
         contract = contractService.findById(id);

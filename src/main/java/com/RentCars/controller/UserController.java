@@ -13,6 +13,7 @@ import com.RentCars.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
+import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +26,8 @@ import java.util.List;
 @AllArgsConstructor
 @Log4j2
 public class UserController {
+
+    private static final Logger log1 = Logger.getLogger(com.RentCars.controller.UserController.class);
 
     private final UserService userService;
 
@@ -41,7 +44,8 @@ public class UserController {
     @PostMapping("/save")
     public UserDto saveUser(@RequestBody UserDto userDto) throws ValidationException {
 
-        log.info("Handling save user: " + userDto);
+        log1.info("Handling save user: " + userDto);
+
         return userService.saveUser(userDto);
     }
 
