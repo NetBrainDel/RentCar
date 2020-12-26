@@ -1,4 +1,4 @@
-package com.RentCars.Config;
+package com.RentCars.config;
 
 import com.RentCars.entity.Gmail;
 import org.springframework.context.annotation.Bean;

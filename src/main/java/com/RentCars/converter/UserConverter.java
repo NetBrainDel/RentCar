@@ -1,16 +1,25 @@
 package com.RentCars.converter;
 
+import com.RentCars.controller.GmailController;
 import com.RentCars.dto.UserDto;
 import com.RentCars.entity.User;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
-import java.sql.Date;
-import java.util.Collections;
+import javax.mail.MessagingException;
 
 @Component
 public class UserConverter {
 
-    public User fromUserDtoToUser(UserDto userDto) {
+    private static final Logger log = Logger.getLogger(com.RentCars.converter.UserConverter.class);
+
+    private final GmailController gmailController;
+
+    public UserConverter(GmailController gmailController) {
+        this.gmailController = gmailController;
+    }
+
+    public User fromUserDtoToUser(UserDto userDto) throws MessagingException {
         User user = new User();
         user.setId(userDto.getId());
         user.setUsername(userDto.getUsername());
@@ -22,12 +31,16 @@ public class UserConverter {
         user.setCar(userDto.getCar());
         user.setCar_n(userDto.getCar_n());
 
+        log.info(user);
+        log.info("-------------------------------------------------------------------------------------------------------");
+
+        gmailController.sendSimpleEmail();
 
         return user;
     }
 
-    public UserDto fromUserToUserDto(User user) {
-    return UserDto.builder()
+    public UserDto fromUserToUserDto(User user){
+        return UserDto.builder()
         .id(user.getId())
         .username(user.getUsername())
         .surname(user.getSurname())
@@ -38,6 +51,7 @@ public class UserConverter {
         .car(user.getCar())
         .car_n(user.getCar_n())
         .build();
+
     }
 
 }

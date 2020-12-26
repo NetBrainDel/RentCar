@@ -9,6 +9,7 @@ import com.RentCars.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.mail.MessagingException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,7 +24,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public UserDto saveUser(UserDto userDto) throws ValidationException {
+    public UserDto saveUser(UserDto userDto) throws ValidationException, MessagingException{
         validateUserDto(userDto);
         User savedUser = userRepository.save(userConverter.fromUserDtoToUser(userDto));
         return userConverter.fromUserToUserDto(savedUser);
@@ -48,7 +49,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto findByPassport(String passport) {
+    public UserDto findByPassport(String passport){
         User user = userRepository.findByPassport(passport);
         if (user != null) {
             return userConverter.fromUserToUserDto(user);
@@ -63,7 +64,7 @@ public class UserServiceImpl implements UserService {
 //    }
 
     @Override
-    public List<UserDto> findAll() {
+    public List<UserDto> findAll(){
         return userRepository.findAll()
                 .stream()
                 .map(userConverter::fromUserToUserDto)
