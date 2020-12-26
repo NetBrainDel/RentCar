@@ -1,11 +1,12 @@
 package com.RentCars.entity;
 
 
+import com.RentCars.controller.GmailController;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.apache.log4j.Logger;
 
 import javax.persistence.*;
-import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.*;
@@ -14,6 +15,8 @@ import java.util.*;
 @Entity
 @Table(name = "m_users")
 public class User {
+
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
