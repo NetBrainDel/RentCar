@@ -16,6 +16,8 @@ function searchByPassport() {
                 '        <th>Login</th>\n' +
                 '        <th>Car</th>\n' +
                 '        <th>Car№</th>\n' +
+                 '        <th>E-mail</th>\n' +
+                 '        <th>Phone</th>\n' +
                 '        <th>Delete</th>\n' +
                 '    </tr>';
             html = html + '<tr>' +
@@ -28,6 +30,9 @@ function searchByPassport() {
                 '        <th>' + user.login +'</th>\n' +
                 '        <th>' + car.car +'</th>\n' +
                 '        <th>' + user.car_n +'</th>\n' +
+                '        <th>' + user.e_mail +'</th>\n' +
+                '        <th>' + user.phone +'</th>\n' +
+
                 '        <td><button onclick="deleteUser(' + user.id + ')">Delete</button></td></tr>';
 
             document.getElementById("usersList").innerHTML = html;
@@ -51,18 +56,21 @@ function createUser() {
     let userPassport= document.getElementById("user_passport").value;
     let userLogin = document.getElementById("user_login").value;
     let userCar_n = document.getElementById("user_car_n").value;
+    let userE_mail = document.getElementById("user_e_mail").value;
+    let userPhone = document.getElementById("user_phone").value;
 
 
 
 
 
-    let xhtml = new XMLHttpRequest();   // new HttpRequest instance
+    let xhtml = new XMLHttpRequest();
     xhtml.open("POST", "http://localhost:8080/users/save");
     xhtml.setRequestHeader("Content-Type", "application/json");
     xhtml.send(JSON.stringify({
         username: userUsername, surname: userSurname,
         birth_date: userBirth_date, gender: userGender,
-        passport: userPassport, login: userLogin, car_n:userCar_n
+        passport: userPassport, login: userLogin, car_n: userCar_n,
+        e_mail: userE_mail, phone: userPhone
     }));
 
     loadUsers();
@@ -71,7 +79,7 @@ function createUser() {
 function loadUsers() {
     let https = new XMLHttpRequest();
     https.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
+        if (this.readyState === 4 && this.status === 200 && this.rent === true) {
             let users = JSON.parse(this.responseText);
             let cars = JSON.parse(this.responseText);
             let html = '<tr>\n' +
@@ -84,6 +92,8 @@ function loadUsers() {
                 '        <th>Login</th>\n' +
                 '        <th>Car</th>\n' +
                 '        <th>Car№</th>\n' +
+                '        <th>E-mail</th>\n' +
+                '        <th>Phone</th>\n' +
                 '        <th>Delete</th>\n' +
                 '    </tr>';
             for (let i = 0; i < users.length; i++) {
@@ -99,6 +109,8 @@ function loadUsers() {
                     '        <th>' + user.login + '</th>\n' +
                     '        <th>' + car.car + '</th>\n' +
                     '        <th>' + user.car_n + '</th>\n' +
+                    '        <th>' + user.e_mail + '</th>\n' +
+                    '        <th>' + user.phone + '</th>\n' +
                     '        <td><button onclick="deleteUser(' + user.id + ')">Delete</button></td></tr>';
 
             }
@@ -137,7 +149,7 @@ loadUsers();
     function loadCars() {
         let https = new XMLHttpRequest();
         https.onreadystatechange = function () {
-    if (this.readyState === 4 && this.status === 200) {
+    if (this.readyState === 4 && this.status === 200 && this.rent === true) {
         let cars = JSON.parse(this.responseText);
         let html = '<tr>\n' +
             '        <th>Car №</th>\n' +
@@ -150,15 +162,11 @@ loadUsers();
             '        <th>Capacity l</th>\n' +
             '        <th>Country of creation</th>\n' +
             '        <th>Rental access</th>\n' +
-
             '    </tr>';
         for (let i = 0; i < cars.length; i++) {
             let car = cars[i];
-
-            if (this.rent === true)
-            {
                 console.log(car);
-            }
+
 
     html = html + '<tr> <td>' + car.id + '</td>\n' +
     '        <th>' + car.brand + '</th>\n' +

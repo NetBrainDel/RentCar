@@ -30,6 +30,9 @@ public class UserConverter {
         user.setLogin(userDto.getLogin());
         user.setCar(userDto.getCar());
         user.setCar_n(userDto.getCar_n());
+        user.setE_mail(userDto.getE_mail());
+        user.setPhone(userDto.getPhone());
+
 
         log.info(user);
         log.info("-------------------------------------------------------------------------------------------------------");
@@ -39,8 +42,8 @@ public class UserConverter {
         return user;
     }
 
-    public UserDto fromUserToUserDto(User user){
-        return UserDto.builder()
+  public UserDto fromUserToUserDto(User user) {
+    return UserDto.builder()
         .id(user.getId())
         .username(user.getUsername())
         .surname(user.getSurname())
@@ -50,8 +53,9 @@ public class UserConverter {
         .login(user.getLogin())
         .car(user.getCar())
         .car_n(user.getCar_n())
+        .e_mail(user.getE_mail())
+        .phone(user.getPhone())
         .build();
-
     }
 
 }

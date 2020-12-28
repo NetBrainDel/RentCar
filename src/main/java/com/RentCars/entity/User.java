@@ -1,10 +1,8 @@
 package com.RentCars.entity;
 
 
-import com.RentCars.controller.GmailController;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.apache.log4j.Logger;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -50,6 +48,17 @@ public class User {
     @Column
     private Long car_n;
 
+    @Column
+    private String password;
+
+    @Column
+    private String e_mail;
+
+    @Column
+    @NotBlank
+    private String phone;
+
+
 
     @OneToOne
     @JsonIgnore
@@ -71,4 +80,6 @@ public class User {
 
     public User() {
     }
+
+
 }

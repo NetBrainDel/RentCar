@@ -29,6 +29,12 @@ public class UserDto {
 
     private Long car_n;
 
+    private String password;
+
+    private String e_mail;
+
+    private String phone;
+
     private Car car;
 
 
