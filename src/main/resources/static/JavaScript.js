@@ -79,7 +79,7 @@ function createUser() {
 function loadUsers() {
     let https = new XMLHttpRequest();
     https.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200 && this.rent === true) {
+        if (this.readyState === 4 && this.status === 200) {
             let users = JSON.parse(this.responseText);
             let cars = JSON.parse(this.responseText);
             let html = '<tr>\n' +
@@ -149,7 +149,7 @@ loadUsers();
     function loadCars() {
         let https = new XMLHttpRequest();
         https.onreadystatechange = function () {
-    if (this.readyState === 4 && this.status === 200 && this.rent === true) {
+    if (this.readyState === 4 && this.status === 200) {
         let cars = JSON.parse(this.responseText);
         let html = '<tr>\n' +
             '        <th>Car №</th>\n' +
@@ -164,21 +164,23 @@ loadUsers();
             '        <th>Rental access</th>\n' +
             '    </tr>';
         for (let i = 0; i < cars.length; i++) {
+
             let car = cars[i];
                 console.log(car);
 
 
     html = html + '<tr> <td>' + car.id + '</td>\n' +
-    '        <th>' + car.brand + '</th>\n' +
-    '        <th>' + car.model + '</th>\n' +
-    '        <th>' + car.guarantee_expiration_date + '</th>\n' +
-    '        <th>' + car.price_rent + '</th>\n' +
-    '        <th>' + car.color + '</th>\n' +
-    '        <th>' + car.creation + '</th>\n' +
-    '        <th>' + car.capacity_l + '</th>\n' +
-    '        <th>' + car.country_of_creation + '</th>\n' +
-    '        <th>' + car.rent + '</th>\n' +
-    '</tr>';
+        '        <th>' + car.brand + '</th>\n' +
+        '        <th>' + car.model + '</th>\n' +
+        '        <th>' + car.guarantee_expiration_date + '</th>\n' +
+        '        <th>' + car.price_rent + '</th>\n' +
+        '        <th>' + car.color + '</th>\n' +
+        '        <th>' + car.creation + '</th>\n' +
+        '        <th>' + car.capacity_l + '</th>\n' +
+        '        <th>' + car.country_of_creation + '</th>\n' +
+        '        <th>' + car.rent + '</th>\n' +
+        '</tr>';
+
 
 }
             document.getElementById("carList").innerHTML = html;

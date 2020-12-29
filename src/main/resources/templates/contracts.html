@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en,ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en,ru" xmlns:th="http://www.w3.org/1999/xhtml" >
 <head>
     <link href="Style.CSS" rel="stylesheet" type="text/css">
     <meta charset="UTF-8">
@@ -23,7 +23,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="contract : ${contracts}">
+                <tr th:each="contract : ${contracts}">
                 <td th:text="${contract.id}"></td>
                 <td th:text="${contract.name_contract}"></td>
                 <td th:text="${contract.time_rent_start}"></td>
@@ -32,12 +32,20 @@
                 <td th:text="${contract.user_id}"></td>
                 <td><a th:href="@{update/{id}(id=${contract.id})}">UPDATE</a></td>
                 </tr>
+
+                <p><a href="/contractCreate">New Contract</a></p>
+
+
             </tbody>
         </table>
     </div>
 </div>
 <form action="index.html">
     <button>User Creation</button>
+</form>
+
+<form action = /accidents>
+    <button>Accident Table</button>
 </form>
 
 <form action="cars.html">

@@ -10,6 +10,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,6 +20,7 @@ import static java.util.Objects.isNull;
 @Service
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
+
 
     private final UserRepository userRepository;
     private final UserConverter userConverter;
@@ -69,6 +72,7 @@ public class UserServiceImpl implements UserService {
                 .stream()
                 .map(userConverter::fromUserToUserDto)
                 .collect(Collectors.toList());
+
     }
 
 

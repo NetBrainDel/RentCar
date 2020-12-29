@@ -1,6 +1,8 @@
 package com.RentCars.controller;
 
+import com.RentCars.entity.Accident;
 import com.RentCars.entity.Contract;
+import com.RentCars.service.ContractService;
 import com.RentCars.service.impl.ContractServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,10 +17,10 @@ import java.util.List;
 @Controller
 public class ContractController {
 
-    private final ContractServiceImpl contractService;
+    private final ContractService contractService;
 
     @Autowired
-    public ContractController(ContractServiceImpl contractService) {
+    public ContractController(ContractService contractService) {
         this.contractService = contractService;
     }
 
@@ -27,6 +29,17 @@ public class ContractController {
         List<Contract> contracts = contractService.findAll();
         model.addAttribute("contracts", contracts);
         return "contracts";
+    }
+
+    @GetMapping("/contractCreate")
+    public String createContractForm(Contract contract){
+        return "contractCreate";
+    }
+
+    @PostMapping("/contractCreate")
+    public String createContract(Contract contract){
+        contractService.saveContract(contract);
+        return "redirect:/contracts";
     }
 
     @GetMapping("/update/{id}")

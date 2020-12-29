@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en,ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>upDate</title>
+</head>
+<body>
+<form action="#" th:action="@{/updateAccident}" th:object="${accident}" method="post">
+
+    <label for="id">№</label>
+    <input type="number" th:field="*{id}" id ="id" placeholder="ID">
+    <br/>
+
+    <label for="contract_id">Contract</label>
+    <input type="number" th:field="*{contract_id}" id ="contract_id" placeholder="Contract">
+    <br/>
+
+    <label for="damages">Damage</label>
+    <input type="text" th:field="*{damages}" id ="damages" placeholder="damages">
+    <br/>
+    <h1>Поля для изменения</h1>
+    <label for="data_accident">Data accident</label>
+    <input type="date" th:field="*{data_accident}" id="data_accident" placeholder="Data accident">
+    <br/>
+
+    <label for="price_damages">Price damage</label>
+    <input type="number" th:field="*{price_damages}" id="price_damages" placeholder="Price damage">
+    <br/>
+
+
+    <input type="submit" value="Update accident">
+
+</form>
+
+</body>
+</html>

@@ -20,6 +20,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 
@@ -29,11 +31,9 @@ import java.util.List;
 @Log4j2
 public class UserController {
 
-
-
     private final UserService userService;
 
-    private final GmailController gmailController;
+
 
 
     @GetMapping

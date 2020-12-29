@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en,ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<link href="Style.CSS" rel="stylesheet" type="text/css">
+<meta charset="UTF-8">
+<title>Accidents</title>
+</head>
+<body>
+<div th:switch="${accidents}">
+    <h2 th:case="null">No accident found!</h2>
+    <div th:case="*">
+        <h2>Accident</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Damages</th>
+                <th>Data_accidents</th>
+                <th>Price_damages</th>
+                <th>№Contracts</th>
+                <th>UpDate</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="accident : ${accidents}">
+                <td th:text="${accident.id}"></td>
+                <td th:text="${accident.damages}"></td>
+                <td th:text="${accident.data_accident}"></td>
+                <td th:text="${accident.price_damages}"></td>
+                <td th:text="${accident.contract_id}"></td>
+                <td><a th:href="@{updateAccident/{id}(id=${accident.id})}">UPDATE</a></td>
+                <td><a th:href="@{accidentDelete/{id}(id=${accident.id})}">Delete</a></td>
+            </tr>
+
+            <p><a href="/accidentCreate">New Accident</a></p>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<form action="index.html">
+    <button>User Creation</button>
+</form>
+
+<form action="cars.html">
+    <button>Admin Table</button>
+</form>
+
+</body>
+</html>
