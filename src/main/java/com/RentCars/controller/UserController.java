@@ -4,11 +4,9 @@ package com.RentCars.controller;
 
 
 import com.RentCars.dto.UserDto;
-import com.RentCars.entity.Car;
-import com.RentCars.entity.Gmail;
 import com.RentCars.entity.User;
 import com.RentCars.exception.ValidationException;
-import com.RentCars.repository.UserRepository;
+
 import com.RentCars.service.UserService;
 
 import lombok.AllArgsConstructor;
