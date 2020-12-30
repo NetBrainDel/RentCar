@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Long>/*CrudRepository<User, Long>*/ {
 
-
+        /*search by passport*/
         User findByPassport(String passport);
 
 

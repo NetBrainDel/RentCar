@@ -31,9 +31,6 @@ public class UserController {
 
     private final UserService userService;
 
-
-
-
     @GetMapping
     public ResponseEntity<List<UserDto>> findAllUsers() {
         return new ResponseEntity(userService.findAll(), HttpStatus.OK);

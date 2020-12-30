@@ -10,6 +10,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,6 +25,18 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserConverter userConverter;
 
+    private void validateUserDto(UserDto userDto) throws ValidationException {
+        if (isNull(userDto)) {
+            throw new ValidationException("Object user is null");
+        }
+        if (isNull(userDto.getPassport()) || userDto.getPassport().isEmpty()) {
+            throw new ValidationException("Passport is empty");
+        }
+        if (isNull(userDto.getPhone()) || userDto.getPhone().isEmpty()) {
+            throw new ValidationException("Phone is empty");
+        }
+    }
+
 
     @Override
     public UserDto saveUser(UserDto userDto) throws ValidationException, MessagingException{
@@ -33,21 +47,12 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    private void validateUserDto(UserDto userDto) throws ValidationException {
-        if (isNull(userDto)) {
-            throw new ValidationException("Object user is null");
-        }
-        if (isNull(userDto.getPassport()) || userDto.getPassport().isEmpty()) {
-            throw new ValidationException("Passport is empty");
-        }
-    }
-
-
     @Override
     public List<User> deleteUser(Long userId) {
        userRepository.deleteById(userId);
        return userRepository.findAll();
     }
+
 
     @Override
     public UserDto findByPassport(String passport){

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.File;
 
@@ -20,6 +22,17 @@ import java.io.File;
 public class GmailController {
 
     public final JavaMailSender emailSender;
+
+    public static boolean isValidEmailAddress(String email) {
+        boolean result = true;
+        try {
+            InternetAddress emailAddr = new InternetAddress(email);
+            emailAddr.validate();
+        } catch (AddressException ex) {
+            result = false;
+        }
+        return result;
+    }
 
     @Autowired
     public GmailController(@Qualifier("getJavaMailSender") JavaMailSender emailSender) {
@@ -48,10 +61,12 @@ public class GmailController {
         FileSystemResource file = new FileSystemResource(new File(path));
         helper.addAttachment("Order", file);
 
+        isValidEmailAddress(Gmail.FRIEND_EMAIL);
 
         emailSender.send(message);
 
 
         return "Сообщение отправлено!Ожидайте ответ!!!";
     }
+
 }
