@@ -23,6 +23,11 @@
 	<dependencies>
 
 		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 		</dependency>
@@ -65,10 +70,10 @@
 			<version>6.0.13.Final</version>
 		</dependency>
 
-<!--		<dependency>-->
-<!--			<groupId>javax.servlet</groupId>-->
-<!--			<artifactId>jstl</artifactId>-->
-<!--		</dependency>-->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
 
 <!--		<dependency>-->
 <!--			<groupId>org.springframework.security</groupId>-->
@@ -85,10 +90,10 @@
 <!--			<artifactId>spring-boot-devtools</artifactId>-->
 <!--		</dependency>-->
 
-<!--		<dependency>-->
-<!--			<groupId>org.springframework</groupId>-->
-<!--			<artifactId>spring-context-support</artifactId>-->
-<!--		</dependency>-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

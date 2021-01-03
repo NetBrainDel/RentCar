@@ -1,5 +1,6 @@
 package com.RentCars.service.impl;
 
+import com.RentCars.controller.GmailController;
 import com.RentCars.converter.UserConverter;
 import com.RentCars.dto.UserDto;
 import com.RentCars.entity.User;
@@ -13,6 +14,7 @@ import javax.mail.MessagingException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.RentCars.controller.GmailController.isValidEmailAddress;
 import static java.util.Objects.isNull;
 
 @Service
@@ -30,8 +32,17 @@ public class UserServiceImpl implements UserService {
         if (isNull(userDto.getPassport()) || userDto.getPassport().isEmpty()) {
             throw new ValidationException("Passport is empty");
         }
-        if (isNull(userDto.getPhone()) || userDto.getPhone().isEmpty()) {
-            throw new ValidationException("Phone is empty");
+        if (userDto.getE_mail().isEmpty()) {
+      System.out.println("E_mail is NULL or is Empty!!!!!!!!!!");
+            if (isNull(userDto.getPhone()) || userDto.getPhone().isEmpty()) {
+                throw new ValidationException("No Phone");
+            }
+
+        }else if(isValidEmailAddress(userDto.getE_mail())){
+            System.out.println("E_mail is Valid");
+
+        }else {
+            System.out.println("E_mail is not Valid");
         }
     }
 
@@ -75,8 +86,6 @@ public class UserServiceImpl implements UserService {
                 .collect(Collectors.toList());
 
     }
-
-
 
 }
 

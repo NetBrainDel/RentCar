@@ -9,7 +9,7 @@ import javax.mail.MessagingException;
 import java.util.List;
 
 
-public interface UserService {
+public interface UserService{
 
     UserDto saveUser(UserDto userDto) throws ValidationException, MessagingException;
 
