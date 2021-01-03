@@ -2,7 +2,6 @@ package com.RentCars.controller;
 
 import com.RentCars.entity.Contract;
 import com.RentCars.service.ContractService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,10 +14,10 @@ public class ContractController {
 
     private final ContractService contractService;
 
-    @Autowired
     public ContractController(ContractService contractService) {
         this.contractService = contractService;
     }
+
 
     @GetMapping("/contracts")
     public String findAll(Model model){

@@ -1,6 +1,5 @@
 package com.RentCars.service.impl;
 
-import com.RentCars.controller.GmailController;
 import com.RentCars.converter.UserConverter;
 import com.RentCars.dto.UserDto;
 import com.RentCars.entity.User;
@@ -14,7 +13,8 @@ import javax.mail.MessagingException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.RentCars.controller.GmailController.isValidEmailAddress;
+
+import static com.RentCars.converter.GmailController.isValidEmailAddress;
 import static java.util.Objects.isNull;
 
 @Service

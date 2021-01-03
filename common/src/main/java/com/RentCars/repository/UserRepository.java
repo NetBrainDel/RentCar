@@ -13,6 +13,8 @@ public interface UserRepository extends JpaRepository<User, Long>/*CrudRepositor
         /*search by passport*/
         User findByPassport(String passport);
 
+        User findByUsername(String username);
+
 
 
 
