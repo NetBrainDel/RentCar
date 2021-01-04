@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.*;
@@ -46,12 +47,14 @@ public class User {
     private String login;
 
     @Column
+    @NotNull
     private Long car_n;
 
     @Column
     private String password;
 
     @Column
+    @Email
     private String e_mail;
 
     @Column

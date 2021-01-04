@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-import static com.RentCars.converter.GmailController.isValidEmailAddress;
 import static java.util.Objects.isNull;
 
 @Service
@@ -32,17 +31,18 @@ public class UserServiceImpl implements UserService {
         if (isNull(userDto.getPassport()) || userDto.getPassport().isEmpty()) {
             throw new ValidationException("Passport is empty");
         }
+
         if (userDto.getE_mail().isEmpty()) {
-      System.out.println("E_mail is NULL or is Empty!!!!!!!!!!");
-            if (isNull(userDto.getPhone()) || userDto.getPhone().isEmpty()) {
-                throw new ValidationException("No Phone");
-            }
+            System.out.println("E_mail is NULL or is Empty!!!!!!!!!!");
 
-        }else if(isValidEmailAddress(userDto.getE_mail())){
-            System.out.println("E_mail is Valid");
-
-        }else {
-            System.out.println("E_mail is not Valid");
+//        }else if(isValidEmailAddress(userDto.getE_mail())){
+//            System.out.println("E_mail is Valid");
+//
+//        }else {
+//            System.out.println("E_mail is not Valid");
+        }
+        if (isNull(userDto.getPhone()) || userDto.getPhone().isEmpty()) {
+            throw new ValidationException("No Phone!!!");
         }
     }
 

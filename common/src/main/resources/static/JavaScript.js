@@ -16,8 +16,8 @@ function searchByPassport() {
                 '        <th>Login</th>\n' +
                 '        <th>Car</th>\n' +
                 '        <th>Car№</th>\n' +
-                 '        <th>E-mail</th>\n' +
-                 '        <th>Phone</th>\n' +
+                '        <th>E-mail</th>\n' +
+                '        <th>Phone</th>\n' +
                 '        <th>Delete</th>\n' +
                 '    </tr>';
             html = html + '<tr>' +
@@ -32,7 +32,6 @@ function searchByPassport() {
                 '        <th>' + user.car_n +'</th>\n' +
                 '        <th>' + user.e_mail +'</th>\n' +
                 '        <th>' + user.phone +'</th>\n' +
-
                 '        <td><button onclick="deleteUser(' + user.id + ')">Delete</button></td></tr>';
 
             document.getElementById("usersList").innerHTML = html;

@@ -3,21 +3,20 @@ package com.RentCars.converter;
 
 import com.RentCars.dto.UserDto;
 import com.RentCars.entity.User;
+
 import org.apache.log4j.Logger;
+
 import org.springframework.stereotype.Component;
 
 import javax.mail.MessagingException;
 
+
 @Component
 public class UserConverter {
 
-    private static final Logger log = Logger.getLogger(com.RentCars.converter.UserConverter.class);
+    private static final Logger log1 = Logger.getLogger(com.RentCars.converter.UserConverter.class);
 
-    private final GmailController gmailController;
 
-    public UserConverter(GmailController gmailController) {
-        this.gmailController = gmailController;
-    }
 
     public User fromUserDtoToUser(UserDto userDto) throws MessagingException {
         User user = new User();
@@ -33,11 +32,10 @@ public class UserConverter {
         user.setE_mail(userDto.getE_mail());
         user.setPhone(userDto.getPhone());
 
+        log1.info(user);
+        log1.info("-------------------------------------------------------------------------------------------------------");
 
-        log.info(user);
-        log.info("-------------------------------------------------------------------------------------------------------");
 
-        gmailController.sendSimpleEmail();
 
         return user;
     }

@@ -13,6 +13,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,8 @@ public class UserController {
 
     private final UserService userService;
 
+    private final GmailController gmailController;
+
     @GetMapping
     public ResponseEntity<List<UserDto>> findAllUsers() {
         return new ResponseEntity(userService.findAll(), HttpStatus.OK);
@@ -37,6 +40,9 @@ public class UserController {
     @PostMapping("/save")
     public UserDto saveUser(@RequestBody UserDto userDto) throws ValidationException,MessagingException{
        log.info("Handling save user: " + userDto);
+
+       gmailController.sendSimpleEmail();
+
        return userService.saveUser(userDto);
     }
 
