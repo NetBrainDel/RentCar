@@ -1,25 +1,27 @@
 package com.RentCars.service.impl;
 
+
 import com.RentCars.converter.UserConverter;
 import com.RentCars.dto.UserDto;
 import com.RentCars.entity.User;
 import com.RentCars.exception.ValidationException;
 import com.RentCars.repository.UserRepository;
 import com.RentCars.service.UserService;
+
 import lombok.AllArgsConstructor;
+
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 import static java.util.Objects.isNull;
+
 
 @Service
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
-
 
     private final UserRepository userRepository;
     private final UserConverter userConverter;
@@ -31,24 +33,17 @@ public class UserServiceImpl implements UserService {
         if (isNull(userDto.getPassport()) || userDto.getPassport().isEmpty()) {
             throw new ValidationException("Passport is empty");
         }
-
-        if (userDto.getE_mail().isEmpty()) {
-            System.out.println("E_mail is NULL or is Empty!!!!!!!!!!");
-
-//        }else if(isValidEmailAddress(userDto.getE_mail())){
-//            System.out.println("E_mail is Valid");
-//
-//        }else {
-//            System.out.println("E_mail is not Valid");
-        }
         if (isNull(userDto.getPhone()) || userDto.getPhone().isEmpty()) {
             throw new ValidationException("No Phone!!!");
+        }
+        if (isNull(userDto.getE_mail()) || userDto.getE_mail().isEmpty()) {
+            System.out.println("E_mail is NULL or is Empty!!!!!!!!!!");
         }
     }
 
 
     @Override
-    public UserDto saveUser(UserDto userDto) throws ValidationException, MessagingException{
+    public UserDto saveUser(UserDto userDto) throws ValidationException, MessagingException {
         validateUserDto(userDto);
         User savedUser = userRepository.save(userConverter.fromUserDtoToUser(userDto));
         return userConverter.fromUserToUserDto(savedUser);
@@ -73,11 +68,6 @@ public class UserServiceImpl implements UserService {
     }
 
 
-//    @Override
-//    public List<UserDto> findAll(){
-//        return userRepository.findAll();
-//    }
-
     @Override
     public List<UserDto> findAll(){
         return userRepository.findAll()
@@ -86,7 +76,6 @@ public class UserServiceImpl implements UserService {
                 .collect(Collectors.toList());
 
     }
-
 }
 
 

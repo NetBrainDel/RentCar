@@ -1,8 +1,6 @@
 package com.RentCars.repository;
 
 
-
-
 import java.util.List;
 
 public interface CrudRepository <K,V> {

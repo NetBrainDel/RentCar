@@ -7,13 +7,14 @@ import com.RentCars.entity.Car;
 import com.RentCars.exception.ValidationException;
 import com.RentCars.repository.CarRepository;
 import com.RentCars.service.CarService;
+
 import lombok.AllArgsConstructor;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
 import static java.util.Objects.isNull;
 
 @Service

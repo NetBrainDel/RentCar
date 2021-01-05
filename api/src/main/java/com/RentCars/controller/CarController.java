@@ -1,13 +1,8 @@
 package com.RentCars.controller;
 
 import com.RentCars.dto.CarDto;
-
 import com.RentCars.entity.Car;
-
-
 import com.RentCars.exception.ValidationException;
-
-
 import com.RentCars.service.CarService;
 
 import lombok.AllArgsConstructor;
@@ -27,8 +22,6 @@ import java.util.Optional;
 public class CarController {
 
     private final CarService carService;
-
- //private final CarRepository carRepository;
 
     @GetMapping
     public ResponseEntity<List<CarDto>> findAllCars() {

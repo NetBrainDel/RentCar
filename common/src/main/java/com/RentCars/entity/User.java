@@ -2,12 +2,15 @@ package com.RentCars.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.*;
 
 import javax.persistence.*;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
 import java.util.*;
 
 @Data
@@ -55,7 +58,7 @@ public class User {
 
     @Column
     @Email
-    private String e_mail;
+    public String e_mail;
 
     @Column
     @NotBlank
@@ -82,8 +85,5 @@ public class User {
         this.car = car;
     }
 
-    public User() {
-    }
-
-
+  public User() {}
 }

@@ -1,7 +1,9 @@
 package com.RentCars.controller;
 
 import com.RentCars.entity.Accident;
+
 import com.RentCars.service.AccidentService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -4,21 +4,18 @@ package com.RentCars.converter;
 import com.RentCars.dto.UserDto;
 import com.RentCars.entity.User;
 
-import org.apache.log4j.Logger;
-
+import com.RentCars.exception.ValidationException;
 import org.springframework.stereotype.Component;
 
-import javax.mail.MessagingException;
+import static java.util.Objects.isNull;
 
 
 @Component
 public class UserConverter {
 
-    private static final Logger log1 = Logger.getLogger(com.RentCars.converter.UserConverter.class);
 
+    public User fromUserDtoToUser(UserDto userDto) throws ValidationException {
 
-
-    public User fromUserDtoToUser(UserDto userDto) throws MessagingException {
         User user = new User();
         user.setId(userDto.getId());
         user.setUsername(userDto.getUsername());
@@ -32,13 +29,8 @@ public class UserConverter {
         user.setE_mail(userDto.getE_mail());
         user.setPhone(userDto.getPhone());
 
-        log1.info(user);
-        log1.info("-------------------------------------------------------------------------------------------------------");
-
-
-
         return user;
-    }
+}
 
   public UserDto fromUserToUserDto(User user) {
     return UserDto.builder()

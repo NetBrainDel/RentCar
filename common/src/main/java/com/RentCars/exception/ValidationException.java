@@ -12,6 +12,6 @@ public class ValidationException  extends Exception {
 
     public String getMessage() {
 
-        return message + " EXCEPTION ";
+        return message + ": Что-то не так! ";
     }
 }
