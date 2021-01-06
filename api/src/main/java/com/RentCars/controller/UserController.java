@@ -33,7 +33,6 @@ public class UserController {
     private static final Logger log1 = Logger.getLogger(com.RentCars.controller.UserController.class);
 
     private final UserService userService;
-
     private final GmailController gmailController;
 
     @GetMapping

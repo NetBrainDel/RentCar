@@ -4,17 +4,16 @@ package com.RentCars.converter;
 import com.RentCars.dto.UserDto;
 import com.RentCars.entity.User;
 
-import com.RentCars.exception.ValidationException;
+
 import org.springframework.stereotype.Component;
 
-import static java.util.Objects.isNull;
 
 
 @Component
 public class UserConverter {
 
 
-    public User fromUserDtoToUser(UserDto userDto) throws ValidationException {
+    public User fromUserDtoToUser(UserDto userDto){
 
         User user = new User();
         user.setId(userDto.getId());
