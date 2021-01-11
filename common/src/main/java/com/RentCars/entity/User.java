@@ -19,7 +19,6 @@ import java.util.*;
 public class User {
 
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -85,5 +84,7 @@ public class User {
         this.car = car;
     }
 
-  public User() {}
+    public User() {
+
+    }
 }

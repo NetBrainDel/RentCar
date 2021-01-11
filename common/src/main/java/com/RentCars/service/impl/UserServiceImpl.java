@@ -12,8 +12,6 @@ import lombok.AllArgsConstructor;
 
 import org.springframework.stereotype.Service;
 
-import javax.mail.MessagingException;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,7 +43,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public UserDto saveUser(UserDto userDto) throws ValidationException, MessagingException {
+    public UserDto saveUser(UserDto userDto) throws ValidationException{
         validateUserDto(userDto);
         User savedUser = userRepository.save(userConverter.fromUserDtoToUser(userDto));
         return userConverter.fromUserToUserDto(savedUser);

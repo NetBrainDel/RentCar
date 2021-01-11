@@ -4,7 +4,8 @@ import com.RentCars.entity.Accident;
 
 import com.RentCars.service.AccidentService;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,14 +16,10 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
+@AllArgsConstructor
 public class AccidentController {
 
     private final AccidentService accidentService;
-
-    @Autowired
-    public AccidentController(AccidentService accidentService) {
-        this.accidentService = accidentService;
-    }
 
     @GetMapping("/accidents")
     public String findAll(Model model){

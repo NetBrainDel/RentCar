@@ -2,8 +2,6 @@ package com.RentCars.controller;
 
 import com.RentCars.entity.Gmail;
 
-
-import com.RentCars.entity.User;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import org.springframework.core.io.FileSystemResource;
@@ -11,21 +9,19 @@ import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
-import org.springframework.stereotype.Controller;
-
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.mail.MessagingException;
-
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import java.io.File;
 
-@Controller
-
+@RestController
+@RequestMapping("/sendEmail")
 public class GmailController {
 
     public final JavaMailSender emailSender;
@@ -47,8 +43,7 @@ public class GmailController {
     }
 
 
-    @ResponseBody
-    @RequestMapping("/sendEmail")
+    @GetMapping
     public String sendSimpleEmail() throws MessagingException {
 
         MimeMessage message = emailSender.createMimeMessage();

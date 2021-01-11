@@ -6,8 +6,6 @@ import com.RentCars.entity.Car;
 import org.springframework.stereotype.Component;
 
 
-
-
 @Component
 public class CarConverter {
 

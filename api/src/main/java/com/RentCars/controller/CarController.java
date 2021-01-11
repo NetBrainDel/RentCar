@@ -47,7 +47,6 @@ public class CarController {
         return carService.findById(id);
     }
 
-
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteCar(@PathVariable Long id) {
         log.info("Handling delete car request: " + id);

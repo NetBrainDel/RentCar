@@ -6,26 +6,22 @@
 </head>
 <body>
 <form action="#" th:action="@{/contractCreate}" th:object="${contract}" method="post">
-
+    <br/>
     <label for="user_id">User</label>
     <input type="number" th:field="*{user_id}" id ="user_id" placeholder="User">
-    <br/>
-
+    <br/><br/>
     <label for="car_id">Car</label>
     <input type="number" th:field="*{car_id}" id ="car_id" placeholder="Car">
-    <br/>
-    <h1>Поля для изменения</h1>
+    <br/><br/>
     <label for="name_contract">Comment</label>
     <input type="text" th:field="*{name_contract}" id="name_contract" placeholder="Name_contract">
-    <br/>
-
+    <br/><br/>
     <label for="time_rent_start">Time_rent_start</label>
     <input type="date" th:field="*{time_rent_start}" id="time_rent_start" placeholder="Time_rent_start">
-    <br/>
-
+    <br/><br/>
     <label for="time_rent_end">Time_rent_end</label>
     <input type="date" th:field="*{time_rent_end}" id="time_rent_end" placeholder="Time_rent_end">
-
+    <br/><br/>
     <input type="submit" value="New Contract">
 </form>
 </body>

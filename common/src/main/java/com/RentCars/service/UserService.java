@@ -4,13 +4,12 @@ import com.RentCars.dto.UserDto;
 import com.RentCars.entity.User;
 import com.RentCars.exception.ValidationException;
 
-import javax.mail.MessagingException;
 import java.util.List;
 
 
 public interface UserService{
 
-    UserDto saveUser(UserDto userDto) throws ValidationException, MessagingException;
+    UserDto saveUser(UserDto userDto) throws ValidationException;
 
     List<User> deleteUser(Long userId);
 
