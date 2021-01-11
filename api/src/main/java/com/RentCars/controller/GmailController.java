@@ -1,6 +1,7 @@
 package com.RentCars.controller;
 
-import com.RentCars.entity.Gmail;
+import com.RentCars.dao.Gmail;
+
 
 import org.springframework.beans.factory.annotation.Qualifier;
 

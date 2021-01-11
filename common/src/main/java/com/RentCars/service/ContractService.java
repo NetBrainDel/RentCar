@@ -1,6 +1,6 @@
 package com.RentCars.service;
 
-import com.RentCars.entity.Contract;
+import com.RentCars.dao.Contract;
 
 import java.util.List;
 

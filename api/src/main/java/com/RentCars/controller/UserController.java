@@ -4,7 +4,7 @@ package com.RentCars.controller;
 
 
 import com.RentCars.dto.UserDto;
-import com.RentCars.entity.User;
+import com.RentCars.dao.User;
 import com.RentCars.exception.ValidationException;
 import com.RentCars.service.UserService;
 

@@ -1,6 +1,6 @@
 package com.RentCars.repository;
 
-import com.RentCars.entity.Accident;
+import com.RentCars.dao.Accident;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

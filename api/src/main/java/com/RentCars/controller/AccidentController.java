@@ -1,6 +1,6 @@
 package com.RentCars.controller;
 
-import com.RentCars.entity.Accident;
+import com.RentCars.dao.Accident;
 
 import com.RentCars.service.AccidentService;
 

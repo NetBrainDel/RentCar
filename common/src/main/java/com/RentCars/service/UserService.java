@@ -1,7 +1,7 @@
 package com.RentCars.service;
 
 import com.RentCars.dto.UserDto;
-import com.RentCars.entity.User;
+import com.RentCars.dao.User;
 import com.RentCars.exception.ValidationException;
 
 import java.util.List;

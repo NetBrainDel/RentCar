@@ -1,5 +1,5 @@
 
-package com.RentCars.entity;
+package com.RentCars.dao;
 
 public class Gmail {
 

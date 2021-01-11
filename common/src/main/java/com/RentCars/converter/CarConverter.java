@@ -1,7 +1,7 @@
 package com.RentCars.converter;
 
 import com.RentCars.dto.CarDto;
-import com.RentCars.entity.Car;
+import com.RentCars.dao.Car;
 
 import org.springframework.stereotype.Component;
 

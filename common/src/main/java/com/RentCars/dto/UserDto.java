@@ -1,7 +1,7 @@
 package com.RentCars.dto;
 
 
-import com.RentCars.entity.Car;
+import com.RentCars.dao.Car;
 
 import lombok.Builder;
 import lombok.Data;

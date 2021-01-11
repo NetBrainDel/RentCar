@@ -3,7 +3,7 @@ package com.RentCars.service.impl;
 
 import com.RentCars.converter.UserConverter;
 import com.RentCars.dto.UserDto;
-import com.RentCars.entity.User;
+import com.RentCars.dao.User;
 import com.RentCars.exception.ValidationException;
 import com.RentCars.repository.UserRepository;
 import com.RentCars.service.UserService;

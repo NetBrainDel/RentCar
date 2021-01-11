@@ -1,4 +1,4 @@
-package com.RentCars.entity;
+package com.RentCars.dao;
 
 import lombok.*;
 

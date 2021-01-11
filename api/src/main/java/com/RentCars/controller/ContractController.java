@@ -1,6 +1,6 @@
 package com.RentCars.controller;
 
-import com.RentCars.entity.Contract;
+import com.RentCars.dao.Contract;
 
 import com.RentCars.service.ContractService;
 

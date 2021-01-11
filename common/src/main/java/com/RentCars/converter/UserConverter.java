@@ -1,8 +1,7 @@
 package com.RentCars.converter;
 
-
 import com.RentCars.dto.UserDto;
-import com.RentCars.entity.User;
+import com.RentCars.dao.User;
 
 import org.springframework.stereotype.Component;
 
@@ -10,9 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserConverter {
 
-
     public User fromUserDtoToUser(UserDto userDto){
-
         User user = new User();
         user.setId(userDto.getId());
         user.setUsername(userDto.getUsername());
