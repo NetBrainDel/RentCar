@@ -2,6 +2,8 @@ package com.RentCars.controller;
 
 import com.RentCars.dao.Contract;
 
+
+import com.RentCars.exception.ValidationException;
 import com.RentCars.service.ContractService;
 
 import lombok.AllArgsConstructor;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+
+import static java.util.Objects.isNull;
 
 @Controller
 @AllArgsConstructor
@@ -27,12 +31,17 @@ public class ContractController {
     }
 
     @GetMapping("/contractCreate")
-    public String createContractForm(Contract contract){
+    public String createContractForm(){
         return "contractCreate";
     }
 
     @PostMapping("/contractCreate")
-    public String createContract(Contract contract){
+    public String createContract(Contract contract)throws ValidationException {
+
+        if (isNull(contract.getUser_id()) || isNull(contract.getCar_id())){
+
+            throw new ValidationException("");
+        }
         contractService.saveContract(contract);
         return "redirect:/contracts";
     }
