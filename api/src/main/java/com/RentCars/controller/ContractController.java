@@ -2,7 +2,6 @@ package com.RentCars.controller;
 
 import com.RentCars.dao.Contract;
 
-
 import com.RentCars.exception.ValidationException;
 import com.RentCars.service.ContractService;
 
@@ -31,7 +30,7 @@ public class ContractController {
     }
 
     @GetMapping("/contractCreate")
-    public String createContractForm(){
+    public String createContractForm(Contract contract){
         return "contractCreate";
     }
 

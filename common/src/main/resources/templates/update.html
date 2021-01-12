@@ -5,11 +5,13 @@
     <title>upDate</title>
 </head>
 <body>
-<form action="#" th:action="@{/update}" th:object="${contract}" method="post">
 
-    <label for="id">ID</label>
-    <input type="number" th:field="*{id}" id ="id" placeholder="ID">
-    <br/>
+    <form action="#" th:action="@{/update/{id}(id=${contract.id})}" th:object="${contract}" method="post">
+
+    <!--<form action="#" th:action="@{/update}" th:object="${contract}" method="post">-->
+<!--    <label for="id">ID</label>-->
+<!--    <input type="number" th:field="*{id}" id ="id" placeholder="ID">-->
+<!--    <br/>-->
 
     <label for="user_id">User</label>
     <input type="number" th:field="*{user_id}" id ="user_id" placeholder="User">
