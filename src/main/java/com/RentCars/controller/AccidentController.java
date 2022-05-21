@@ -1,11 +1,8 @@
 package com.RentCars.controller;
 
 import com.RentCars.dao.Accident;
-
 import com.RentCars.service.AccidentService;
-
 import lombok.AllArgsConstructor;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

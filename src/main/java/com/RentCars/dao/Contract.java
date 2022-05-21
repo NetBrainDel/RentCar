@@ -33,7 +33,6 @@ public class Contract {
     private Long user_id;
 
 
-
     public Contract(Long id) {
         this.id = id;
     }
