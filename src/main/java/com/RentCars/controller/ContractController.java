@@ -26,12 +26,12 @@ public class ContractController {
     public String findAll(Model model){
         List<Contract> contracts = contractService.findAll();
         model.addAttribute("contracts", contracts);
-        return "contracts";
+        return "redirect:/contracts";
     }
 
     @GetMapping("/contractCreate")
     public String createContractForm(Contract contract){
-        return "contractCreate";
+        return "redirect:/contracts";
     }
 
     @PostMapping("/contractCreate")
@@ -49,7 +49,7 @@ public class ContractController {
     public String updateContractForm(@PathVariable("id") Long id, Model model, @Valid Contract contract){
         contract = contractService.findById(id);
         model.addAttribute("contract", contract);
-        return "update";
+        return "redirect:/contracts";
     }
 
     @PostMapping("/update")

@@ -17,6 +17,7 @@ public class RentCarsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(RentCarsApplication.class, args);
+
 	}
 
 

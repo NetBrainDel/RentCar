@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>New Accident</title>
+</head>
+<body>
+<form action="#" th:action="@{/accidentCreate}" th:object="${accident}" method="post">
+    <label for="damages">Damages</label>
+    <input type="text" th:field="*{damages}" id="damages" placeholder="Damages">
+
+    <label for="data_accident">Data accident</label>
+    <input type="date" th:field="*{data_accident}" id="data_accident" placeholder="Data accident">
+
+    <label for="price_damages">Price damage</label>
+    <input type="number" th:field="*{price_damages}" id="price_damages" placeholder="Price damage">
+
+    <label for="contract_id">№ Contract</label>
+    <input type="number" th:field="*{contract_id}" id="contract_id" placeholder="№ Contract">
+
+    <input type="submit" value="New Accident">
+</form>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en, ru" >
+
+<head>
+
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        html {
+            background: url(https://media.giphy.com/media/4ss3eLEDYcDcVPtmw5/giphy.gif)
+            no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        h1{
+            background: #D9FFAD; /* Цвет фона под заголовком */
+            color: green; /* Цвет текста */
+            padding: 2px; /* Поля вокруг текста */
+        }
+    </style>
+    <meta charset="UTF-8">
+
+    <title>RentCars</title>
+
+</head>
+<body>
+
+<h1>Create User</h1>
+<h2 style="color: #a5a4a4">Заполните пустые графы</h2>
+<h2 style="color: #a5a4a4">И выберите авто</h2>
+<h3 style="color: #a5a4a4">В случае появления вопросов напишите нам: RentCars@gmail.com</h3>
+<h3 style="color: #a5a4a4">Телефон для справок : +375(44)111-00-11</h3>
+<h4 style="color: #a5a4a4">* - Обязательно для заполнения</h4>
+
+<form action="#" >
+    <label for="user_username"></label><input id="user_username" placeholder ="username*">
+    <label for="user_surname"></label><input id="user_surname" placeholder="surname*">
+    <label for="user_birth_date"></label><input id="user_birth_date" placeholder="birth_date*">
+    <label for="user_gender"></label><input id="user_gender" placeholder="gender">
+    <label for="user_passport"></label><input id="user_passport" placeholder="passport*">
+    <label for="user_login"></label><input id="user_login" placeholder="login*">
+    <label for="user_car_n"></label><input id="user_car_n" placeholder="car№*">
+    <label for="user_e_mail"></label><input id="user_e_mail" placeholder="e_mail">
+    <label for="user_phone"></label><input id="user_phone" placeholder="phone*">
+
+    <button  onclick="createUser()">
+    <a href= "thank_you.html" >Add Request</a>
+    </button>
+
+</form>
+<br/>
+<table id="carList"></table>
+<br/>
+<form action="cars.html">
+    <button>Admin Table</button>
+</form>
+
+<script src="javaScript.js"></script>
+
+</body>
+</html>

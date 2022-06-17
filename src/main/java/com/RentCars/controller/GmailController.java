@@ -1,15 +1,10 @@
 package com.RentCars.controller;
 
 import com.RentCars.dao.Gmail;
-
-
 import org.springframework.beans.factory.annotation.Qualifier;
-
 import org.springframework.core.io.FileSystemResource;
-
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +13,6 @@ import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
 import java.io.File;
 
 @RestController
@@ -30,8 +24,8 @@ public class GmailController {
     public  boolean isValidEmailAddress(String email) {
         boolean result = true;
         try {
-            InternetAddress emailAddr = new InternetAddress(email);
-            emailAddr.validate();
+            InternetAddress emailAdd = new InternetAddress(email);
+            emailAdd.validate();
         } catch (AddressException ex) {
             result = false;
         }
@@ -45,7 +39,7 @@ public class GmailController {
 
 
     @GetMapping
-    public String sendSimpleEmail() throws MessagingException {
+    public String sendSimpleEmail() throws MessagingException{
 
         MimeMessage message = emailSender.createMimeMessage();
 
@@ -56,7 +50,7 @@ public class GmailController {
         helper.setSubject("ORDER");
         helper.setText("CREATE CONTRACT!!!");
 
-        String path = "C:/Users/tsybi/Desktop/logging.log";
+        String path = "D:/logging.log";
         FileSystemResource file = new FileSystemResource(new File(path));
         helper.addAttachment("Order", file);
 
