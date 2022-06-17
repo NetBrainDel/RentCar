@@ -5,7 +5,7 @@
     <title>New Contract</title>
 </head>
 <body>
-<form action="#" th:action="@{/contractCreate}" th:object="${contract}" method="post">
+<form action="#" th:action="@{/contractCreate}" th:object="${contracts}" method="post">
     <br/>
     <label for="user_id">User</label>
     <input type="number" th:field="*{user_id}" id ="user_id" placeholder="User">

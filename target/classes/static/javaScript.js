@@ -129,7 +129,7 @@ loadUsers();
         let country_of_creation = document.getElementById("country_of_creation").value;
         let rental_access = document.getElementById("rent").value;
 
-        let xhtml = new XMLHttpRequest();   // new HttpRequest instance
+        let xhtml = new XMLHttpRequest();
     xhtml.open("POST", "http://localhost:8080/cars/save");
     xhtml.setRequestHeader("Content-Type", "application/json");
         xhtml.send(JSON.stringify({
@@ -179,10 +179,86 @@ loadUsers();
                 document.getElementById("carList").innerHTML = html;
         }
 }
-};
-
+        };
             https.open("GET", "http://localhost:8080/cars/findAll", true);
             https.send();
 
 }
 loadCars();
+///////////////////////////////////////////////////Accident\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+function loadAccident() {
+    let httpss = new XMLHttpRequest();
+    httpss.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            let accidents = JSON.parse(this.responseText);
+            let html = '<tr>\n' +
+                '        <th>id</th>\n' +
+                '        <th>damages</th>\n' +
+                '        <th>data_accident</th>\n' +
+                '        <th>price_damages</th>\n' +
+                '        <th>contract_id</th>' +
+                '</tr>';
+            for (let i = 0; i < accidents.length; i++) {
+
+                let accident = accidents[i];
+                console.log(accident);
+
+                html = html + '<tr> <td>' + accident.id + '</td>\n' +
+                    '        <th>' + accident.damages + '</th>\n' +
+                    '        <th>' + accident.data_accident + '</th>\n' +
+                    '        <th>' + accident.price_damages + '</th>\n' +
+                    '        <th>' + accident.contract_id + '</th>\n' +
+                    '</tr>';
+
+                document.getElementById("accidentsList").innerHTML = html;
+            }
+        }
+    };
+    httpss.open("GET", "http://localhost:8080/accidents/findAll", true);
+    httpss.send();
+}
+    loadAccident();
+function createAccident() {
+    let damages = document.getElementById("damages").value;
+    let data_accident = document.getElementById("data_accident").value;
+    let price_damages = document.getElementById("price_damages").value;
+    let contract_id = document.getElementById("contract_id").value;
+
+    let xhtml = new XMLHttpRequest();
+    xhtml.open("POST", "http://localhost:8080/accidents/save");
+    xhtml.setRequestHeader("Content-Type", "application/json");
+    xhtml.send(JSON.stringify({
+        damages: damages, data_accident: data_accident,
+        price_damages: price_damages, contract_id: contract_id
+    }));
+
+    loadAccident();
+
+}
+function searchById() {
+    let id = document.getElementById("search_accidents").value;
+    let httpss = new XMLHttpRequest();
+    httpss.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            let accidents = JSON.parse(this.responseText);
+            let html = '<tr>\n' +
+                '        <th>Accident №</th>\n' +
+                '        <th>damages</th>\n' +
+                '        <th>data_accident</th>\n' +
+                '        <th>price_damages</th>\n' +
+                '        <th>contract_id</th>\n' +
+                '    </tr>';
+            html = html + '<tr>' +
+                '        <td>' + accidents.id +'</td>\n' +
+                '        <th>' + accidents.damages +'</th>\n' +
+                '        <th>' + accidents.data_accident +'</th>\n' +
+                '        <th>' + accidents.price_damages +'</th>\n' +
+                '        <th>' + accidents.contract_id +'</th>\n' +
+                '        <td><button onclick="deleteUser(' + accidents.id + ')">Delete</button></td></tr>';
+
+            document.getElementById("accidentsList").innerHTML = html;
+        }
+    };
+    httpss.open("GET", "http://localhost:8080/users/findById?id=" + id, true);
+    httpss.send();
+}

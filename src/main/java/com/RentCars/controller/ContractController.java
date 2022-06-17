@@ -16,17 +16,18 @@ import java.util.List;
 import static java.util.Objects.isNull;
 
 @Controller
+@RequestMapping("/contracts")
 @AllArgsConstructor
 public class ContractController {
 
     private final ContractService contractService;
 
 
-    @GetMapping("/contracts")
+    @GetMapping()
     public String findAll(Model model){
         List<Contract> contracts = contractService.findAll();
         model.addAttribute("contracts", contracts);
-        return "redirect:/contracts";
+        return "contracts";
     }
 
     @GetMapping("/contractCreate")

@@ -1,14 +1,12 @@
 package com.RentCars.exception;
 
 
+import lombok.AllArgsConstructor;
 
-
+@AllArgsConstructor
 public class ValidationException  extends Exception {
 
-
     private String message;
-
-    public ValidationException(String message) {}
 
     public String getMessage() {
 

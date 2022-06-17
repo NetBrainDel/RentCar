@@ -24,7 +24,6 @@ public class CarServiceImpl implements CarService {
     private final CarRepository carRepository;
     private final CarConverter carConverter;
 
-
     @Override
     public CarDto saveCar(CarDto carDto) throws ValidationException {
         validateCarDto(carDto);
@@ -53,11 +52,6 @@ public class CarServiceImpl implements CarService {
 
 
 
-//    @Override
-//    public List<Car> findAll(){
-//        return carRepository.findAll();
-//    }
-
     @Override
     public List<CarDto> findAll() {
 
@@ -66,8 +60,5 @@ public class CarServiceImpl implements CarService {
                 .map(carConverter::fromCarToCarDto)
                 .collect(Collectors.toList());
     }
-
-
-
 
 }

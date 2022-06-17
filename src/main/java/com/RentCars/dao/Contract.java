@@ -1,12 +1,14 @@
 package com.RentCars.dao;
 
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 import javax.persistence.*;
 
 
 @Data
+@AllArgsConstructor
 @Entity
 @Table(name = "m_contract")
 public class Contract {
@@ -21,7 +23,7 @@ public class Contract {
 
     // @NotNull
     @Column(name = "time_rent_start")
-    private String  time_rent_start;
+    private String time_rent_start;
 
     @Column(name = "time_rent_end")
     private String  time_rent_end;

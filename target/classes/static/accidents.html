@@ -1,50 +1,23 @@
 <!DOCTYPE html>
-<html lang="en,ru" xmlns:th="http://www.w3.org/1999/xhtml">
-<link href="style.css" rel="stylesheet" type="text/css">
-<meta charset="UTF-8">
-<title>Accidents</title>
+<html lang="en, ru">
+<head>
+
+    <title>Accident</title>
+
+    <meta charset="UTF-8"/>
+
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+
+</head>
 <body>
-<div th:switch="${accidents}">
-    <h2 th:case="null">No accident found!</h2>
-    <div th:case="*">
-        <h2>Accident</h2>
-        <table>
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Damages</th>
-                <th>Data_accidents</th>
-                <th>Price_damages</th>
-                <th>№Contracts</th>
-                <th>UpDate</th>
-                <th>Delete</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="accident : ${accidents}">
-                <td th:text="${accident.id}"></td>
-                <td th:text="${accident.damages}"></td>
-                <td th:text="${accident.data_accident}"></td>
-                <td th:text="${accident.price_damages}"></td>
-                <td th:text="${accident.contract_id}"></td>
-                <td><a th:href="@{updateAccident/{id}(id=${accident.id})}">UPDATE</a></td>
-                <td><a th:href="@{accidentDelete/{id}(id=${accident.id})}">Delete</a></td>
-            </tr>
 
-            <p><a href="accidentCreate.html">New Accident</a></p>
-
-            </tbody>
-        </table>
-    </div>
-</div>
+<h2>Accidents Table</h2>
+<table id="accidentsList"></table>
 <br/>
-<form action="index.html">
-    <button>User Creation</button>
-</form>
+<label for="search_accidents"></label><input id="search_accidents">
+<button onclick="searchById()">Search by Id</button>
 <br/>
-<form action="cars.html">
-    <button>Admin Table</button>
-</form>
+<script src="javaScript.js"></script>
 
 </body>
 </html>

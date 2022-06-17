@@ -26,6 +26,7 @@ public class CarDto {
 
     private String country_of_creation;
 
+
     private Boolean rent;
 
     private Date guarantee_expiration_date;

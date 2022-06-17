@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AccidentServiceImpl implements AccidentService {
@@ -19,8 +20,13 @@ public class AccidentServiceImpl implements AccidentService {
         this.accidentRepository = accidentRepository;
     }
 
-    public Accident findById(Long id){
-        return accidentRepository.getOne(id);
+    @Override
+    public Optional<Accident> findById(Long id){
+        Optional<Accident> accident = accidentRepository.findById(id);
+        if (accident != null) {
+            return accident;
+        }
+        return null;
     }
 
     public List<Accident> findAll(){
