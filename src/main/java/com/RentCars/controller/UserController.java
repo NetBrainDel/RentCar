@@ -50,6 +50,7 @@ public class UserController {
                 || userDto.getPhone().isBlank()){
             throw new ValidationException("");
         } else  {
+
             log1.info("---------------------------------------------------NEW USER----------------------------------------------------");
             log1.info(userDto);
             gmailController.sendSimpleEmail();

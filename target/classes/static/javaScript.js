@@ -98,6 +98,7 @@ function loadUsers() {
                 let car = cars[i];
                 console.log(user,car);
                 let tCar;
+
                 if(car.car!=null){
                     tCar="В аренде";
                 }else {
@@ -169,7 +170,6 @@ loadUsers();
 
                 let car = cars[i];
                     console.log(car);
-
                 html = html + '<tr> <td>' + car.id + '</td>\n' +
                     '        <th>' + car.brand + '</th>\n' +
                     '        <th>' + car.model + '</th>\n' +
