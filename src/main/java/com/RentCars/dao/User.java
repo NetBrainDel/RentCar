@@ -78,7 +78,6 @@ public class User {
 
 
 
-
     public User(String username, Car car) {
         this.username = username;
         this.car = car;

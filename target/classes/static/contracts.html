@@ -59,5 +59,31 @@
 <form action="index.html">
     <button>Home Page</button>
 </form>
+
+<h2>Contract Table</h2>
+<form action="#" >
+    <label for="name_contract"></label><input id="name_contract" placeholder ="nameContract*">
+    <label for="time_rent_start"></label><input id="time_rent_start" placeholder="timeRentStart*">
+    <label for="time_rent_end"></label><input id="time_rent_end" placeholder="timeRentEnd*">
+    <label for="car_id"></label><input id="car_id" placeholder="carId">
+    <label for="user_id"></label><input id="user_id" placeholder="userId*">
+
+    <button  onclick="createContract()">
+        <a href= "thank_you.html" >Add Request</a>
+    </button>
+
+</form>
+
+<br/>
+<form action="addUser.html">
+    <button class="b1">Choose a car</button>
+</form>
+<table id="contractsList"></table>
+<br/>
+<label for="search_contract"></label><input id="search_contract">
+<button onclick="searchByIdC()">Search by Id</button>
+<br/>
+<script src="javaScript.js"></script>
+
 </body>
 </html>

@@ -73,6 +73,7 @@ function createUser() {
 }
 
 function loadUsers() {
+
     let https = new XMLHttpRequest();
     https.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
@@ -96,6 +97,12 @@ function loadUsers() {
                 let user = users[i];
                 let car = cars[i];
                 console.log(user,car);
+                let tCar;
+                if(car.car!=null){
+                    tCar="В аренде";
+                }else {
+                    tCar="Ожидает обработки!";
+                }
                 html = html + '<tr><td>' + user.id + '</td>\n' +
                     '        <th>' + user.username + '</th>\n' +
                     '        <th>' + user.surname + '</th>\n' +
@@ -103,7 +110,7 @@ function loadUsers() {
                     '        <th>' + user.gender + '</th>\n' +
                     '        <th>' + user.passport + '</th>\n' +
                     '        <th>' + user.login + '</th>\n' +
-                    '        <th>' + car.car + '</th>\n' +
+                    '        <th>' + tCar + '</th>\n' +
                     '        <th>' + user.car_n + '</th>\n' +
                     '        <th>' + user.e_mail + '</th>\n' +
                     '        <th>' + user.phone + '</th>\n' +
@@ -116,7 +123,6 @@ function loadUsers() {
     https.open("GET", "http://localhost:8080/users/findAll", true);
     https.send();
 }
-
 loadUsers();
 /*///////////////////////////////////////////////////////////CAR////////////////////////////////////////////////////////*/
     function createCar() {
@@ -261,4 +267,87 @@ function searchById() {
     };
     httpss.open("GET", "http://localhost:8080/users/findById?id=" + id, true);
     httpss.send();
+}
+////////////////////////////////////////////////Contract\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+function loadContract() {
+    let htt = new XMLHttpRequest();
+    htt.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            let contracts = JSON.parse(this.responseText);
+            let html = '<tr>\n' +
+                '        <th>id</th>\n' +
+                '        <th>name_contract</th>\n' +
+                '        <th>time_rent_start</th>\n' +
+                '        <th>time_rent_end</th>\n' +
+                '        <th>car_id</th>' +
+                '        <th>user_id</th>' +
+                '</tr>';
+            for (let i = 0; i < contracts.length; i++) {
+
+                let contract = contracts[i];
+                console.log(contract);
+
+                html = html + '<tr> <td>' + contract.id + '</td>\n' +
+                    '        <th>' + contract.name_contract + '</th>\n' +
+                    '        <th>' + contract.time_rent_start + '</th>\n' +
+                    '        <th>' + contract.time_rent_end + '</th>\n' +
+                    '        <th>' + contract.car_id + '</th>\n' +
+                    '        <th>' + contract.user_id + '</th>\n' +
+                    '</tr>';
+
+                document.getElementById("contractsList").innerHTML = html;
+            }
+        }
+    };
+    htt.open("GET", "http://localhost:8080/contracts/findAll", true);
+    htt.send();
+}
+loadContract();
+function createContract() {
+    let name_contract = document.getElementById("name_contract").value;
+    let time_rent_start = document.getElementById("time_rent_start").value;
+    let time_rent_end = document.getElementById("time_rent_end").value;
+    let car_id = document.getElementById("car_id").value;
+    let user_id = document.getElementById("user_id").value;
+
+
+    let xhtml = new XMLHttpRequest();
+    xhtml.open("POST", "http://localhost:8080/contracts/save");
+    xhtml.setRequestHeader("Content-Type", "application/json");
+    xhtml.send(JSON.stringify({
+        name_contract: name_contract, time_rent_start: time_rent_start,
+        time_rent_end: time_rent_end, car_id: car_id, user_id: user_id
+    }));
+
+    loadContract();
+
+}
+function searchByIdC() {
+    let id = document.getElementById("search_contracts").value;
+    let htt = new XMLHttpRequest();
+    htt.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            let contracts = JSON.parse(this.responseText);
+            let html = '<tr>\n' +
+                '        <th>Contract №</th>\n' +
+                '        <th>name_contract</th>\n' +
+                '        <th>time_rent_start</th>\n' +
+                '        <th>time_rent_end</th>\n' +
+                '        <th>car_id</th>\n' +
+                '        <th>user_id</th>\n' +
+                '    </tr>';
+            html = html + '<tr>' +
+                '        <td>' + contracts.id +'</td>\n' +
+                '        <th>' + contracts.name_contract +'</th>\n' +
+                '        <th>' + contracts.time_rent_start +'</th>\n' +
+                '        <th>' + contracts.time_rent_end +'</th>\n' +
+                '        <th>' + contracts.car_id +'</th>\n' +
+                '        <th>' + contracts.user_id +'</th>\n' +
+                '        <td><button onclick="deleteUser(' + contracts.id + ')">Delete</button></td></tr>';
+
+            document.getElementById("contractsList").innerHTML = html;
+        }
+    };
+    htt.open("GET", "http://localhost:8080/contracts/findById?id=" + id, true);
+    htt.send();
 }
