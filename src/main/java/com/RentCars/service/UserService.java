@@ -1,7 +1,6 @@
 package com.RentCars.service;
 
 import com.RentCars.dto.UserDto;
-import com.RentCars.dao.User;
 import com.RentCars.exception.ValidationException;
 
 import java.util.List;
@@ -11,7 +10,7 @@ public interface UserService{
 
     UserDto saveUser(UserDto userDto) throws ValidationException;
 
-    List<User> deleteUser(Long userId);
+    void deleteUser(Long userId);
 
     UserDto findByPassport(String passport) ;
 

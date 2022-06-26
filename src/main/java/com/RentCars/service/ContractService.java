@@ -1,13 +1,14 @@
 package com.RentCars.service;
 
-import com.RentCars.dao.Contract;
+import com.RentCars.dto.ContractDto;
+import com.RentCars.exception.ValidationException;
 
 import java.util.List;
 
 public interface ContractService {
-    Contract findById(Long id);
 
-    List<Contract> findAll();
+    List<ContractDto> findAll();
+    void deleteContract(Long contractId);
 
-    Contract saveContract(Contract contract);
+    ContractDto saveContract(ContractDto contractDto) throws ValidationException;
 }

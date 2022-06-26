@@ -1,36 +1,73 @@
 package com.RentCars.service.impl;
 
+import com.RentCars.converter.ContractConverter;
 import com.RentCars.dao.Contract;
+import com.RentCars.dto.ContractDto;
+import com.RentCars.exception.ValidationException;
 import com.RentCars.repository.ContractRepository;
 import com.RentCars.service.ContractService;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
-    @Service
+import static java.util.Objects.isNull;
+
+
+@Service
+@AllArgsConstructor
     public class ContractServiceImpl implements ContractService {
 
         private final ContractRepository contractRepository;
+        private final ContractConverter contractConverter;
 
-        @Autowired
-        public ContractServiceImpl(ContractRepository contractRepository) {
-            this.contractRepository = contractRepository;
+    private void validateContractDto(ContractDto contractDto) throws ValidationException {
+        if (isNull(contractDto)) {
+            throw new ValidationException("Object contract is null");
+        }
+        if (isNull(contractDto.getName_contract()) || contractDto.getName_contract().isEmpty()) {
+            throw new ValidationException("Name is empty");
+        }
+        if (isNull(contractDto.getTime_rent_start()) || contractDto.getTime_rent_start().isEmpty()) {
+            throw new ValidationException("Time_rent_start is NULL or is Empty!!!!!!!!!!");
+        }
+        if (isNull(contractDto.getTime_rent_end()) || contractDto.getTime_rent_end().isEmpty()) {
+            System.out.println("Time_rent_end is NULL or is Empty!!!!!!!!!!");
+        }
+        if (isNull(contractDto.getCar_id())) {
+            System.out.println("Car_id is NULL!!!!!!!!!!");
+        }
+        if (isNull(contractDto.getUser_id())) {
+            System.out.println("User_id is NULL!!!!!!!!!!");
+        }
+    }
+
+
+@Override
+public List<ContractDto> findAll(){
+    return contractRepository.findAll()
+            .stream()
+            .map(contractConverter::fromContractToContractDto)
+            .collect(Collectors.toList());
+
+}
+
+        @Override
+        public void deleteContract(Long contractId) {
+            contractRepository.deleteById(contractId);
+            contractRepository.findAll();
         }
 
-        public Contract findById(Long id){
-            return contractRepository.getOne(id);
-        }
 
-        public List<Contract> findAll(){
-            return contractRepository.findAll();
-        }
 
-        public Contract saveContract(Contract contract){
-            return contractRepository.save(contract);
-        }
+    @Override
+    public ContractDto saveContract(ContractDto contractDto) throws ValidationException {
+        validateContractDto(contractDto);
+        Contract saveContract = contractRepository.save(contractConverter.fromContractDtoToContract(contractDto));
+        return contractConverter.fromContractToContractDto(saveContract);
 
+    }
     }
 
 

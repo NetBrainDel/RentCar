@@ -26,6 +26,7 @@ public class UserController {
     private static final Logger log1 = Logger.getLogger(com.RentCars.controller.UserController.class);
 
     private final UserService userService;
+    private final CarController carController;
     private final GmailController gmailController;
 
     @GetMapping
@@ -50,6 +51,7 @@ public class UserController {
                 || userDto.getPhone().isBlank()){
             throw new ValidationException("");
         } else  {
+
 
             log1.info("---------------------------------------------------NEW USER----------------------------------------------------");
             log1.info(userDto);

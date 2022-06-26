@@ -11,9 +11,10 @@ import java.util.Date;
 @Setter
 @ToString
 @EqualsAndHashCode
-@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "m_cars")
+@NoArgsConstructor
 public class Car{
 
     @Id
@@ -23,7 +24,7 @@ public class Car{
     @Column
     private String model;
 
-    @Column
+
     private String brand;
 
     @Column
@@ -38,7 +39,7 @@ public class Car{
     private Double price_rent;
 
     @Column
-    private String color;
+    private String colors;
 
     @Column
     private Double capacity_l;
@@ -60,7 +61,6 @@ public class Car{
         this.model = model;
         this.user = user;
     }
-
 
 
 }

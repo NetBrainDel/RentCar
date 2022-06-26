@@ -1,17 +1,18 @@
 package com.RentCars.service;
 
-import com.RentCars.dao.Accident;
+import com.RentCars.dto.AccidentDto;
+import com.RentCars.exception.ValidationException;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface AccidentService {
 
-    Optional<Accident> findById(Long id);
+    Optional<AccidentDto> findById(Long id);
 
-    List<Accident> findAll();
+    List<AccidentDto> findAll();
 
-    Accident saveAccident(Accident accident);
+    void deleteAccident(Long accidentId);
 
-    void deleteById(Long accidentId);
+    AccidentDto saveAccident(AccidentDto accidentDto) throws ValidationException;
 }

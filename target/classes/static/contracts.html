@@ -7,14 +7,13 @@
 </head>
 <body>
         <h2>Contract Table</h2>
-        <form action="#" >
+        <form action="#">
             <label for="name_contract"></label><input id="name_contract" placeholder ="nameContract*">
-            <label for="time_rent_start"></label><input id="time_rent_start" placeholder="timeRentStart*">
-            <label for="time_rent_end"></label><input id="time_rent_end" placeholder="timeRentEnd*">
-            <label for="car_id"></label><input id="car_id" placeholder="carId">
+            <label for="time_rent_start"></label><input type="datetime-local" id="time_rent_start" placeholder="timeRentStart*">
+            <label for="time_rent_end"></label><input type="datetime-local" id="time_rent_end" placeholder="timeRentEnd*">
+            <label for="car_id"></label><input  id="car_id" placeholder="carId">
             <label for="user_id"></label><input id="user_id" placeholder="userId*">
-
-            <button  onclick="createContract()">
+            <button onclick="createContract()" value="Refresh Page" onClick="window.location.reload();" >
                 <a href="contracts.html">Add Contract</a>
             </button>
 
@@ -25,16 +24,9 @@
             <button class="b1">Choose a car</button>
         </form>
         <table id="contractsList"></table>
-        <br/>
-        <label for="search_contract"></label><input id="search_contract">
-        <button onclick="searchByIdC()">Search by Id</button>
-        <br/>
+
         <script src="javaScript.js"></script>
-<br/>
-<button>
-    <a href="contractCreate.html">New Contract</a>
-</button>
-<br/>
+
 <br/>
 <form action="addUser.html">
     <button>User Creation</button>

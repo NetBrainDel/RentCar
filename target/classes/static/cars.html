@@ -10,11 +10,35 @@
 
 </head>
 <body>
-
+<br/>
 <h2>Admin Table</h2>
 <table id="carList"></table>
+<form action="#" >
+    <label for="model"></label><input id="model" placeholder ="model*">
+    <label for="brand"></label><input id="brand" placeholder="brand*">
+    <label for="creation"></label><input type="date" id="creation" placeholder="creation*">
+    <label for="guarantee_expiration_date"></label><input type="date" id="guarantee_expiration_date" placeholder="guarantee_expiration_date">
+    <label for="price_rent"></label><input id="price_rent" placeholder="price_rent*">
+    <label for="colors"></label><input id="colors" placeholder="color*">
+    <label for="capacity_l"></label><input id="capacity_l" placeholder="capacity_l*">
+    <label for="country_of_creation"></label><input id="country_of_creation" placeholder="country_of_creation">
+    <label for="rent"></label><input id="rent" placeholder="rent*">
+
+    <button  onclick="createCar()"  value="Refresh Page" onClick="window.location.reload();" >
+        <a href= "cars.html" >Add Request</a>
+    </button>
+</form>
+<br/>
+<br/>
+<br/>
+<label for="search_car"></label><input id="search_car"/>
+<button onclick="searchByIdCar()">Search by Auto</button>
+<br/>
 <br/>
 <table id="usersList"></table>
+<br/>
+<br/>
+<table id="contractsList"></table>
 <br/>
 <label for="search_field"></label><input id="search_field">
 <button onclick="searchByPassport()">Search by Passport</button>
@@ -22,6 +46,7 @@
 <form action = contracts.html>
     <button>Contract Table</button>
 </form>
+
 
 
 

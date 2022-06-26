@@ -1,8 +1,7 @@
 package com.RentCars.converter;
 
-import com.RentCars.dto.CarDto;
 import com.RentCars.dao.Car;
-
+import com.RentCars.dto.CarDto;
 import org.springframework.stereotype.Component;
 
 
@@ -16,7 +15,7 @@ public class CarConverter {
         car.setBrand(carDto.getBrand());
         car.setCreation(carDto.getCreation());
         car.setPrice_rent(carDto.getPrice_rent());
-        car.setColor(carDto.getColor());
+        car.setColors(carDto.getColors());
         car.setCapacity_l(carDto.getCapacity_l());
         car.setCountry_of_creation(carDto.getCountry_of_creation());
         car.setGuarantee_expiration_date(carDto.getGuarantee_expiration_date());
@@ -32,7 +31,7 @@ public class CarConverter {
                 .brand(car.getBrand())
                 .creation(car.getCreation())
                 .price_rent(car.getPrice_rent())
-                .color((car.getColor()))
+                .colors((car.getColors()))
                 .capacity_l((car.getCapacity_l()))
                 .country_of_creation(car.getCountry_of_creation())
                 .guarantee_expiration_date(car.getGuarantee_expiration_date())

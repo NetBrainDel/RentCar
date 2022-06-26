@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en, ru">
 <head>
-
+    <script src="javaScript.js"></script>
     <title>Accident</title>
 
     <meta charset="UTF-8"/>
@@ -10,16 +10,36 @@
 
 </head>
 <body>
-<form action="addUser.html">
-    <button class="b1">Choose a car</button>
-</form>
-<h2>Accidents Table</h2>
+<h2>Contract Table</h2>
+<br/>
+<table id="contractsList"></table>
+<br/>
+<h2>Accident Table</h2>
+<br/>
 <table id="accidentsList"></table>
 <br/>
-<label for="search_accidents"></label><input id="search_accidents">
-<button onclick="searchById()">Search by Id</button>
-<br/>
-<script src="javaScript.js"></script>
+<form action="#">
+    <label for="damages"></label><input id="damages" placeholder ="damages*">
+    <label for="data_accident"></label><input type="datetime-local" id="data_accident" placeholder="data_accident*">
+    <label for="price_damages"></label><input id="price_damages" placeholder="price_damages*">
+    <label for="contract_id"></label><input  id="contract_id" placeholder="contract_id">
+    <button onclick="createAccident()" value="Refresh Page" onClick="window.location.reload();" >
+        <a href="accidents.html">Add Accident</a>
+    </button>
 
+</form>
+
+<br/>
+<form action="addUser.html">
+    <button>User Creation</button>
+</form>
+<br/>
+<form action="cars.html">
+    <button>Admin Table</button>
+</form>
+<br/>
+<form action="index.html">
+    <button>Home Page</button>
+</form>
 </body>
 </html>

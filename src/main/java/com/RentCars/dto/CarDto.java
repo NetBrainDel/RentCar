@@ -1,12 +1,14 @@
 package com.RentCars.dto;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
+@AllArgsConstructor
 @Builder
 public class CarDto {
 
@@ -20,7 +22,7 @@ public class CarDto {
 
     private Double price_rent;
 
-    private String color;
+    private String colors;
 
     private Double capacity_l;
 

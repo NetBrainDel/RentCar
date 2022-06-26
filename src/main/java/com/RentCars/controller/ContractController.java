@@ -1,59 +1,60 @@
 package com.RentCars.controller;
 
 import com.RentCars.dao.Contract;
+import com.RentCars.dto.ContractDto;
 import com.RentCars.exception.ValidationException;
 import com.RentCars.service.ContractService;
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 import static java.util.Objects.isNull;
 
-@Controller
+@RestController
 @RequestMapping("/contracts")
 @AllArgsConstructor
+@Log4j2
 public class ContractController {
 
     private final ContractService contractService;
+    private final CarController carController;
+    private static final Logger log1 = Logger.getLogger(com.RentCars.controller.ContractController.class);
 
     @GetMapping
-    public ResponseEntity<List<Contract>> findAllContract() {
+    public ResponseEntity<List<ContractDto>> findAllContracts() {
         return new ResponseEntity<>(contractService.findAll(), HttpStatus.OK);
     }
     @GetMapping("/findAll")
-    public String findAll(Model model){
-        List<Contract> contracts = contractService.findAll();
-        model.addAttribute("contracts", contracts);
-        return "redirect:/contracts";
+    public List<ContractDto> findAllContract() {
+        log.info("Handling find all contract request");
+        return contractService.findAll();
     }
-////////////////
     @PostMapping("/save")
-    public Contract createContract(@RequestBody Contract contract)throws ValidationException {
+    public ContractDto createContract(@RequestBody ContractDto contractDto) throws ValidationException{
+        
+        if (isNull(contractDto.getUser_id()) || isNull(contractDto.getCar_id())){
 
-        if (isNull(contract.getUser_id()) || isNull(contract.getCar_id())){
-
-            throw new ValidationException("");
+            throw new ValidationException("что-то не ввели!");
         }
-        contractService.saveContract(contract);
-        return contractService.saveContract(contract);
-    }
-//////////////////
-    @GetMapping("/update/{id}")
-    public String updateContractForm(@PathVariable("id") Long id, Model model, @Valid Contract contract){
-        contract = contractService.findById(id);
-        model.addAttribute("contract", contract);
-        return "redirect:/contracts";
+        System.out.println("Добавили контракт! ");
+        System.out.println(contractDto);
+        System.out.println(" ");
+        if (contractDto.getCar_id()!=null){
+            System.out.println(carController.findById(contractDto.getCar_id()));
+        }
+        return contractService.saveContract(contractDto);
     }
 
-    @PostMapping("/update")
-    public String updateContract(Contract contract){
-        contractService.saveContract(contract);
-        return "redirect:/contracts";
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Contract> deleteContract(@PathVariable Long id) {
+        log1.info("Handling delete contract request: " + id);
+        contractService.deleteContract(id);
+        return ResponseEntity.ok().build();
     }
 }

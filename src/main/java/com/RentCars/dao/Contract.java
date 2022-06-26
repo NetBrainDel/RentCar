@@ -1,8 +1,7 @@
 package com.RentCars.dao;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -35,10 +34,7 @@ public class Contract {
     private Long user_id;
 
 
-    public Contract(Long id) {
-        this.id = id;
-    }
-
     public Contract() {
+
     }
 }
