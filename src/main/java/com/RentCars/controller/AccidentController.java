@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import static java.util.Objects.isNull;
 
@@ -21,7 +22,7 @@ public class AccidentController {
 
     private final AccidentService accidentService;
     private final ContractController contractController;
-   // private static final Logger log1 = Logger.getLogger(com.RentCars.controller.AccidentController.class);
+    private static final Logger log1 = Logger.getLogger(String.valueOf(AccidentController.class));
 
     @GetMapping
     public ResponseEntity<List<AccidentDto>> findAllAccidents() {
@@ -51,7 +52,7 @@ public class AccidentController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<AccidentDto> deleteAccident(@PathVariable Long id) {
-      //  log1.info("Handling delete accident request: " + id);
+        log1.info("Handling delete accident request: " + id);
         accidentService.deleteAccident(id);
         return ResponseEntity.ok().build();
     }
