@@ -5,10 +5,12 @@ C:\Users\tsybi\IdeaProjects\RentCar\src\main\java\com\RentCars\service\CarServic
 C:\Users\tsybi\IdeaProjects\RentCar\src\main\java\com\RentCars\converter\CarConverter.java
 C:\Users\tsybi\IdeaProjects\RentCar\src\main\java\com\RentCars\dto\ContractDto.java
 C:\Users\tsybi\IdeaProjects\RentCar\src\main\java\com\RentCars\dto\UserDto.java
+C:\Users\tsybi\IdeaProjects\RentCar\src\main\java\com\RentCars\dto\AccidentDto.java
 C:\Users\tsybi\IdeaProjects\RentCar\src\main\java\com\RentCars\controller\AccidentController.java
 C:\Users\tsybi\IdeaProjects\RentCar\src\main\java\com\RentCars\controller\GmailController.java
 C:\Users\tsybi\IdeaProjects\RentCar\src\main\java\com\RentCars\controller\ContractController.java
 C:\Users\tsybi\IdeaProjects\RentCar\src\main\java\com\RentCars\repository\ContractRepository.java
+C:\Users\tsybi\IdeaProjects\RentCar\src\main\java\com\RentCars\converter\AccidentConverter.java
 C:\Users\tsybi\IdeaProjects\RentCar\src\main\java\com\RentCars\config\SwaggerConfiguration.java
 C:\Users\tsybi\IdeaProjects\RentCar\src\main\java\com\RentCars\controller\UserController.java
 C:\Users\tsybi\IdeaProjects\RentCar\src\main\java\com\RentCars\service\AccidentService.java

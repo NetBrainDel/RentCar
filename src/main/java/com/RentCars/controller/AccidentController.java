@@ -21,7 +21,6 @@ import static java.util.Objects.isNull;
 public class AccidentController {
 
     private final AccidentService accidentService;
-    private final ContractController contractController;
     private static final Logger log1 = Logger.getLogger(String.valueOf(AccidentController.class));
 
     @GetMapping
@@ -43,9 +42,6 @@ public class AccidentController {
         System.out.println("Добавлено происшествия! ");
         System.out.println(accidentDto);
         System.out.println(" ");
-//        if (accidentDto.getContract_id()!=null){
-//            System.out.println(accidentController.findAllAccident(accidentController.get);
-//        }
         return accidentService.saveAccident(accidentDto);
     }
 

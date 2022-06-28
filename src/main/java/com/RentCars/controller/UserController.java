@@ -10,10 +10,8 @@ import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import javax.mail.MessagingException;
 import java.util.List;
-
 import static java.util.Objects.isNull;
 
 
@@ -26,7 +24,6 @@ public class UserController {
     private static final Logger log1 = Logger.getLogger(com.RentCars.controller.UserController.class);
 
     private final UserService userService;
-    private final CarController carController;
     private final GmailController gmailController;
 
     @GetMapping

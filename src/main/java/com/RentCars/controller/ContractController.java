@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 import static java.util.Objects.isNull;
 
@@ -49,7 +50,11 @@ public class ContractController {
         }
         return contractService.saveContract(contractDto);
     }
-
+    @GetMapping("/findById")
+    public Optional<? extends Contract> findById(@RequestParam Long id) {
+        log.info("Handling find by id ControllerContract request: " + id);
+        return contractService.findById(id);
+    }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Contract> deleteContract(@PathVariable Long id) {

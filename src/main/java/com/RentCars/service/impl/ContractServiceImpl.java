@@ -8,8 +8,10 @@ import com.RentCars.repository.ContractRepository;
 import com.RentCars.service.ContractService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
@@ -44,14 +46,13 @@ import static java.util.Objects.isNull;
     }
 
 
-@Override
-public List<ContractDto> findAll(){
-    return contractRepository.findAll()
-            .stream()
-            .map(contractConverter::fromContractToContractDto)
-            .collect(Collectors.toList());
-
-}
+    @Override
+    public List<ContractDto> findAll() {
+        return contractRepository.findAll()
+                .stream()
+                .map(contractConverter::fromContractToContractDto)
+                .collect(Collectors.toList());
+    }
 
         @Override
         public void deleteContract(Long contractId) {
@@ -59,14 +60,17 @@ public List<ContractDto> findAll(){
             contractRepository.findAll();
         }
 
-
-
     @Override
-    public ContractDto saveContract(ContractDto contractDto) throws ValidationException {
+    public ContractDto saveContract(ContractDto contractDto) throws ValidationException{
         validateContractDto(contractDto);
-        Contract saveContract = contractRepository.save(contractConverter.fromContractDtoToContract(contractDto));
-        return contractConverter.fromContractToContractDto(saveContract);
+        Contract savedContract = contractRepository.save(contractConverter.fromContractDtoToContract(contractDto));
+        return contractConverter.fromContractToContractDto(savedContract);
 
+    }
+    @Override
+    public Optional<Contract> findById(@RequestParam Long id) {
+        System.out.println(id+" Serves");
+        return contractRepository.findById(id);
     }
     }
 

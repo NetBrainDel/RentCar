@@ -367,6 +367,8 @@ function loadContract() {
     htt.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             let contracts = JSON.parse(this.responseText);
+            let accident = JSON.parse(this.responseText);
+
             let html = '<tr>\n' +
                 '        <th>id</th>\n' +
                 '        <th>name_contract</th>\n' +
@@ -377,7 +379,6 @@ function loadContract() {
                 '        <th>DELETE</th>' +
                 '</tr>';
             for (let i = 0; i < contracts.length; i++) {
-
                 let contract = contracts[i];
                 console.log(contract);
 
@@ -418,12 +419,14 @@ function createContract() {
                 time_rent_end: time_rent_end, car_id: car_id, user_id: user_id
             }));
 }
-function searchByIdC() {
-    let id = document.getElementById("search_id").value;
+function searchByContract() {
+    let id = document.getElementById("search_contract").value;
     let htt = new XMLHttpRequest();
+
     htt.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-            let contract = JSON.parse(this.responseText);
+            let contracts = JSON.parse(this.responseText);
+            let accident = JSON.parse(this.responseText);
             let html = '<tr>\n' +
                 '        <th>Contract №</th>\n' +
                 '        <th>name_contract</th>\n' +
@@ -434,17 +437,26 @@ function searchByIdC() {
                 '        <th>Delete</th>\n' +
                 '    </tr>';
             html = html + '<tr>' +
-                '        <td>' + contract.id +'</td>\n' +
-                '        <th>' + contract.name_contract +'</th>\n' +
-                '        <th>' + contract.time_rent_start +'</th>\n' +
-                '        <th>' + contract.time_rent_end +'</th>\n' +
-                '        <th>' + contract.car_id +'</th>\n' +
-                '        <th>' + contract.user_id +'</th>\n' +
-                '        <td><button onclick="deleteContract(' + contract.id + ')">Delete</button></td></tr>';
+                '        <td>' + contracts.id +'</td>\n' +
+                '        <th>' + contracts.name_contract +'</th>\n' +
+                '        <th>' + contracts.time_rent_start +'</th>\n' +
+                '        <th>' + contracts.time_rent_end +'</th>\n' +
+                '        <th>' + contracts.car_id +'</th>\n' +
+                '        <th>' + contracts.user_id +'</th>\n' +
+                '        <td><button onclick="deleteContract(' + contracts.id + ')">Delete</button></td></tr>';
 
-            document.getElementById("contractList").innerHTML = html;
+            document.getElementById("contractsList").innerHTML = html;
         }
     };
-    htt.open("GET", "http://localhost:8080/contracts/findByPIdC?id=" + id, true);
+    htt.open("GET", "http://localhost:8080/contracts/findById?id=" + id, true);
     htt.send();
+}
+/////////////////////////////////////////////////////////////ROLE\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+function findByLogin() {
+    let name = document.getElementById("name_role").value;
+    let role = document.getElementById("name_role").value;
+    let https1 = new XMLHttpRequest();
+
+    https1.open("GET", "http://localhost:8080/login/role?findByLogin=" + name,role);
+    https1.send();
 }

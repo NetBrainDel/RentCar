@@ -8,5 +8,6 @@ import java.util.Optional;
 public interface CarRepository<L, S> extends JpaRepository<Car,L> /*CrudRepository<Car, Long>*/ {
 
         Optional<Car> findById(L id);
-        Optional<Car> findByBrand(String model);
+
+        Optional<Car> findByModel(String model);
 }
